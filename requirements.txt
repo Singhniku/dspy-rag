@@ -1,0 +1,22 @@
+# Core RAG stack — all local-first. Versions pinned to a known-good set.
+# NOTE: the langchain-* family MUST stay on the 0.3.x line. RAGAS 0.4.x imports
+# a module that langchain 1.x removed, so newer langchain breaks the import.
+dspy==3.2.1                 # programmatic prompt optimization
+chromadb==1.5.9             # local vector store
+sentence-transformers==5.6.1  # local embedding model for retrieval
+ollama==0.6.2               # python client for local LLM inference
+
+# Evaluation
+ragas==0.4.3                # RAG-specific metrics (faithfulness, relevancy, ...)
+datasets==5.0.1             # ragas builds on HF datasets
+
+# Pinned langchain family (RAGAS dependency — keep on 0.3.x, see note above)
+langchain==0.3.30
+langchain-core==0.3.86
+langchain-community==0.3.31
+langchain-openai==0.2.14
+langchain-text-splitters==0.3.11
+
+# Utilities
+python-dotenv==1.2.2
+pandas==3.0.5

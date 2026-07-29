@@ -1,0 +1,50 @@
+[
+  {
+    "question": "How many days of paid annual leave do full-time employees get, and how many can be carried over?",
+    "ground_truth": "Full-time employees accrue 20 days of paid annual leave per year, and may carry over a maximum of 5 unused days into the next year."
+  },
+  {
+    "question": "When does an employee need a medical certificate for sick leave?",
+    "ground_truth": "A medical certificate is required for any sick absence longer than 3 consecutive working days, and must be submitted within 7 days of returning to work."
+  },
+  {
+    "question": "How much paid parental leave does the primary caregiver receive and how much notice is required?",
+    "ground_truth": "The primary caregiver receives 16 weeks of fully paid parental leave, and must give at least 8 weeks written notice before starting it."
+  },
+  {
+    "question": "What is the deadline for submitting expense claims, and what happens to very old claims?",
+    "ground_truth": "Expense claims must be submitted within 30 days. Claims after 30 days need director-level approval, and claims older than 90 days will not be reimbursed at all."
+  },
+  {
+    "question": "When is business class travel allowed?",
+    "ground_truth": "Business class requires VP approval and is reserved for flights exceeding 9 hours."
+  },
+  {
+    "question": "What is the nightly hotel limit in high-cost cities and which cities count as high-cost?",
+    "ground_truth": "The hotel limit is $350 per night in high-cost cities, which are New York, San Francisco, London, Tokyo, and Zurich."
+  },
+  {
+    "question": "What are the password requirements at Acme Robotics?",
+    "ground_truth": "Passwords must be at least 14 characters with upper case, lower case, a number, and a symbol, and must be rotated every 90 days."
+  },
+  {
+    "question": "How must Restricted data be protected?",
+    "ground_truth": "Restricted data must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN."
+  },
+  {
+    "question": "How quickly must a lost or stolen laptop be reported?",
+    "ground_truth": "A lost or stolen device must be reported to the Security Operations Center within 1 hour of discovery."
+  },
+  {
+    "question": "How many approvals does a pull request need before merging?",
+    "ground_truth": "A pull request needs at least two approvals, and at least one must come from a designated code owner of the affected module."
+  },
+  {
+    "question": "What is the 'daylight deploy' rule?",
+    "ground_truth": "Production deployments must occur between 10:00 and 16:00 on business days so engineers are available to respond to issues; this is the daylight deploy rule."
+  },
+  {
+    "question": "How fast must an on-call engineer acknowledge a critical page, and how are on-call shifts compensated?",
+    "ground_truth": "The on-call engineer must acknowledge a critical page within 10 minutes, and each completed on-call week is compensated with an additional day of leave."
+  }
+]
