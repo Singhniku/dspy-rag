@@ -1,0 +1,634 @@
+{
+  "invariance": [
+    {
+      "id": "inv01",
+      "original": "How many days of paid annual leave do full-time employees get per year?",
+      "expect": [
+        [
+          "\\b20\\b",
+          "twenty"
+        ]
+      ],
+      "fact": "20 days",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "How much paid vacation time does a full-time employee accrue each year?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Per year, a full-time employee at Acme receives how many paid annual leave days?"
+        },
+        {
+          "kind": "typo",
+          "question": "how many paid anual leave days do full time staff get a year"
+        }
+      ]
+    },
+    {
+      "id": "inv02",
+      "original": "How many days of paid sick leave do employees get per year?",
+      "expect": [
+        [
+          "\\b10\\b",
+          "\\bten\\b"
+        ]
+      ],
+      "fact": "10 days",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the yearly allowance of paid sick days?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Each year, how many paid sick days is an employee entitled to?"
+        },
+        {
+          "kind": "typo",
+          "question": "how many paid sik days do employees get per yr"
+        }
+      ]
+    },
+    {
+      "id": "inv03",
+      "original": "How many weeks of paid parental leave does the primary caregiver get?",
+      "expect": [
+        [
+          "\\b16\\b",
+          "sixteen"
+        ]
+      ],
+      "fact": "16 weeks",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the length of fully paid leave for a primary caregiver after a birth or adoption?"
+        },
+        {
+          "kind": "restructure",
+          "question": "For the primary caregiver, how many weeks of parental leave are paid?"
+        },
+        {
+          "kind": "typo",
+          "question": "primary care giver parental leave - how many weeks paid?"
+        }
+      ]
+    },
+    {
+      "id": "inv04",
+      "original": "Within how many days must expense claims be submitted?",
+      "expect": [
+        [
+          "\\b30\\b",
+          "thirty"
+        ]
+      ],
+      "fact": "30 days",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the deadline for filing an expense claim after the expense is incurred?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Expense claims have to be submitted within how many days?"
+        },
+        {
+          "kind": "typo",
+          "question": "whats the deadline to submit expence claims"
+        }
+      ]
+    },
+    {
+      "id": "inv05",
+      "original": "What approval is needed to fly business class?",
+      "expect": [
+        [
+          "\\bVP\\b",
+          "vice president"
+        ]
+      ],
+      "fact": "VP approval",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "Who has to sign off on a business-class flight?"
+        },
+        {
+          "kind": "restructure",
+          "question": "To book business class, whose approval does an employee need?"
+        },
+        {
+          "kind": "typo",
+          "question": "who approves buisness class flights"
+        }
+      ]
+    },
+    {
+      "id": "inv06",
+      "original": "What is the nightly hotel limit in high-cost cities?",
+      "expect": [
+        [
+          "350"
+        ]
+      ],
+      "fact": "$350",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the maximum hotel rate per night in an expensive city such as London?"
+        },
+        {
+          "kind": "restructure",
+          "question": "In high-cost cities, hotel bookings may not exceed what nightly amount?"
+        },
+        {
+          "kind": "typo",
+          "question": "hotel cap per nite in high cost citys?"
+        }
+      ]
+    },
+    {
+      "id": "inv07",
+      "original": "What is the minimum password length?",
+      "expect": [
+        [
+          "\\b14\\b",
+          "fourteen"
+        ]
+      ],
+      "fact": "14 characters",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "How many characters must an employee password have at least?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Passwords must be at least how long?"
+        },
+        {
+          "kind": "typo",
+          "question": "min pasword length?"
+        }
+      ]
+    },
+    {
+      "id": "inv08",
+      "original": "How quickly must a lost or stolen laptop be reported?",
+      "expect": [
+        [
+          "\\b1 hour",
+          "\\bone hour",
+          "\\ban hour",
+          "60 minutes"
+        ]
+      ],
+      "fact": "1 hour",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the reporting deadline for a missing company laptop?"
+        },
+        {
+          "kind": "restructure",
+          "question": "If a laptop is stolen, within what time must it be reported to the Security Operations Center?"
+        },
+        {
+          "kind": "typo",
+          "question": "lost my laptop, how fast do i have to report it"
+        }
+      ]
+    },
+    {
+      "id": "inv09",
+      "original": "How many approvals does a pull request need before it can be merged?",
+      "expect": [
+        [
+          "\\btwo\\b",
+          "\\b2\\b"
+        ]
+      ],
+      "fact": "two approvals",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "How many reviewers must approve a PR before merging?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Before a pull request is merged into main, it needs how many approvals?"
+        },
+        {
+          "kind": "typo",
+          "question": "how many aprovals for a PR to merge"
+        }
+      ]
+    },
+    {
+      "id": "inv10",
+      "original": "How quickly must the on-call engineer acknowledge a critical page?",
+      "expect": [
+        [
+          "\\b10 min",
+          "\\bten min"
+        ]
+      ],
+      "fact": "10 minutes",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the acknowledgement deadline for a critical page during an on-call shift?"
+        },
+        {
+          "kind": "restructure",
+          "question": "A critical page must be acknowledged by the on-call engineer within how long?"
+        },
+        {
+          "kind": "typo",
+          "question": "oncall engineer - how fast to ack a critical page?"
+        }
+      ]
+    },
+    {
+      "id": "inv11",
+      "original": "What is the daily meal allowance in North America while traveling?",
+      "expect": [
+        [
+          "\\b75\\b"
+        ]
+      ],
+      "fact": "$75",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "How much can an employee spend on food per day on a trip in North America?"
+        },
+        {
+          "kind": "restructure",
+          "question": "While traveling in North America, the daily meal allowance is how much?"
+        },
+        {
+          "kind": "typo",
+          "question": "daily meal allowence in north america?"
+        }
+      ]
+    },
+    {
+      "id": "inv12",
+      "original": "How much can an employee expense for a home-office setup in their first year?",
+      "expect": [
+        [
+          "1,000",
+          "\\b1000\\b",
+          "one thousand"
+        ]
+      ],
+      "fact": "$1,000",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the first-year budget for home-office equipment?"
+        },
+        {
+          "kind": "restructure",
+          "question": "In their first year, employees can claim how much for a home-office setup?"
+        },
+        {
+          "kind": "typo",
+          "question": "home ofice setup expense limit first yr?"
+        }
+      ]
+    },
+    {
+      "id": "inv13",
+      "original": "After how many minutes of inactivity must a company laptop screen auto-lock?",
+      "expect": [
+        [
+          "\\b5\\b",
+          "\\bfive\\b"
+        ]
+      ],
+      "fact": "5 minutes",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "What is the idle timeout before a company laptop's screen locks?"
+        },
+        {
+          "kind": "restructure",
+          "question": "A company laptop screen must lock automatically after how much inactivity?"
+        },
+        {
+          "kind": "typo",
+          "question": "laptop screen auto lock after how many mins?"
+        }
+      ]
+    },
+    {
+      "id": "inv14",
+      "original": "What language is the robot fleet firmware written in?",
+      "expect": [
+        [
+          "rust"
+        ]
+      ],
+      "fact": "Rust",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "Which programming language is used for the robots' firmware?"
+        },
+        {
+          "kind": "restructure",
+          "question": "The robot fleet firmware is written in which language?"
+        },
+        {
+          "kind": "typo",
+          "question": "firmwear language for the robot fleet?"
+        }
+      ]
+    },
+    {
+      "id": "inv15",
+      "original": "Through which portal must expense claims be submitted?",
+      "expect": [
+        [
+          "concord"
+        ]
+      ],
+      "fact": "Concord",
+      "variants": [
+        {
+          "kind": "synonym",
+          "question": "Which system do employees use to file expense claims?"
+        },
+        {
+          "kind": "restructure",
+          "question": "Expense claims are submitted through which portal?"
+        },
+        {
+          "kind": "typo",
+          "question": "where do i submit expence claims, which portal"
+        }
+      ]
+    }
+  ],
+  "directional": [
+    {
+      "id": "dir01",
+      "original": "Are personal USB storage devices allowed on engineering workstations?",
+      "expect": "no",
+      "negated": "Are personal USB storage devices prohibited on engineering workstations?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Personal USB storage devices are prohibited on all engineering workstations."
+    },
+    {
+      "id": "dir02",
+      "original": "Can an engineer deploy to production at 11:00 on a Tuesday?",
+      "expect": "yes",
+      "negated": "Is an engineer barred from deploying to production at 11:00 on a Tuesday?",
+      "negated_expect": "no",
+      "negation": "antonym",
+      "source": "Production deployments must occur between 10:00 and 16:00 on business days."
+    },
+    {
+      "id": "dir03",
+      "original": "Is multi-factor authentication mandatory for systems that access customer data?",
+      "expect": "yes",
+      "negated": "Is multi-factor authentication optional for systems that access customer data?",
+      "negated_expect": "no",
+      "negation": "antonym",
+      "source": "MFA is mandatory for all systems that access customer data."
+    },
+    {
+      "id": "dir04",
+      "original": "Does unused sick leave carry over into the next year?",
+      "expect": "no",
+      "negated": "Is it true that unused sick leave does not carry over into the next year?",
+      "negated_expect": "yes",
+      "negation": "not",
+      "source": "Sick leave does not carry over and is reset on January 1."
+    },
+    {
+      "id": "dir05",
+      "original": "Can employees expense a laptop personally?",
+      "expect": "no",
+      "negated": "Are employees forbidden from expensing a laptop personally?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Laptops and phones are provided by IT and must not be expensed personally."
+    },
+    {
+      "id": "dir06",
+      "original": "Does a pull request need at least two approvals before merging?",
+      "expect": "yes",
+      "negated": "Can a pull request be merged with fewer than two approvals?",
+      "negated_expect": "no",
+      "negation": "antonym",
+      "source": "Every pull request requires at least two approvals before it can be merged."
+    },
+    {
+      "id": "dir07",
+      "original": "Can an engineer deploy to production at 15:00 on a Friday?",
+      "expect": "no",
+      "negated": "Are production deployments at 15:00 on a Friday frozen?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Friday afternoon deployments after 14:00 are frozen."
+    },
+    {
+      "id": "dir08",
+      "original": "Is economy the standard class for flights under 6 hours?",
+      "expect": "yes",
+      "negated": "Is economy not the standard class for flights under 6 hours?",
+      "negated_expect": "no",
+      "negation": "not",
+      "source": "Economy class is the standard for all flights under 6 hours."
+    },
+    {
+      "id": "dir09",
+      "original": "Is full-disk encryption required on company laptops?",
+      "expect": "yes",
+      "negated": "Is full-disk encryption not required on company laptops?",
+      "negated_expect": "no",
+      "negation": "not",
+      "source": "Company laptops must have full-disk encryption enabled."
+    },
+    {
+      "id": "dir10",
+      "original": "Can expense claims older than 90 days be reimbursed?",
+      "expect": "no",
+      "negated": "Is it true that expense claims older than 90 days are not reimbursed?",
+      "negated_expect": "yes",
+      "negation": "not",
+      "source": "Claims older than 90 days will not be reimbursed under any circumstances."
+    },
+    {
+      "id": "dir11",
+      "original": "Can an engineer be on call for two weeks in a row?",
+      "expect": "no",
+      "negated": "Is an engineer not allowed to be on call for two weeks in a row?",
+      "negated_expect": "yes",
+      "negation": "not",
+      "source": "No engineer may be on call for more than one week in any four-week period."
+    },
+    {
+      "id": "dir12",
+      "original": "Should employees investigate a suspected security incident themselves before reporting it?",
+      "expect": "no",
+      "negated": "Should employees avoid investigating a suspected security incident themselves before reporting it?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Employees must never attempt to investigate or remediate an incident themselves before reporting it."
+    },
+    {
+      "id": "dir13",
+      "original": "Is PostgreSQL the standard database?",
+      "expect": "yes",
+      "negated": "Is PostgreSQL not the standard database?",
+      "negated_expect": "no",
+      "negation": "not",
+      "source": "The standard database is PostgreSQL."
+    },
+    {
+      "id": "dir14",
+      "original": "Does unpaid leave affect continuity of service?",
+      "expect": "no",
+      "negated": "Is continuity of service preserved during unpaid leave?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Unpaid leave does not affect continuity of service."
+    },
+    {
+      "id": "dir15",
+      "original": "Are hotel minibar charges reimbursable?",
+      "expect": "no",
+      "negated": "Are hotel minibar charges non-reimbursable?",
+      "negated_expect": "yes",
+      "negation": "antonym",
+      "source": "Hotel minibar charges are never reimbursable."
+    },
+    {
+      "id": "dir16",
+      "original": "Must every production deployment have a documented rollback plan?",
+      "expect": "yes",
+      "negated": "Can a production deployment go ahead without a rollback plan?",
+      "negated_expect": "no",
+      "negation": "antonym",
+      "source": "Every production deployment must be accompanied by a rollback plan documented in the release ticket."
+    }
+  ],
+  "abstention": [
+    {
+      "id": "abs01",
+      "question": "What is the daily meal allowance when traveling in South America?",
+      "kind": "near_miss",
+      "resembles": "meal allowance is given only for North America ($75) and Europe (€70)"
+    },
+    {
+      "id": "abs02",
+      "question": "How many days of annual leave do part-time employees accrue?",
+      "kind": "near_miss",
+      "resembles": "annual leave is stated only for full-time employees"
+    },
+    {
+      "id": "abs03",
+      "question": "What encryption standard is required for Confidential data?",
+      "kind": "near_miss",
+      "resembles": "AES-256 is stated only for Restricted data"
+    },
+    {
+      "id": "abs04",
+      "question": "After how many minutes must a company phone screen auto-lock?",
+      "kind": "near_miss",
+      "resembles": "the 5-minute auto-lock is stated only for laptops"
+    },
+    {
+      "id": "abs05",
+      "question": "How much can an employee expense for home-office equipment in their second year?",
+      "kind": "near_miss",
+      "resembles": "the $1,000 home-office budget is for the first year only"
+    },
+    {
+      "id": "abs06",
+      "question": "What is the Security Operations Center's first-response time for low-severity incidents?",
+      "kind": "near_miss",
+      "resembles": "the 15-minute guarantee is only for critical incidents"
+    },
+    {
+      "id": "abs07",
+      "question": "How much parental leave do contractors receive?",
+      "kind": "near_miss",
+      "resembles": "parental leave is described for employees only"
+    },
+    {
+      "id": "abs08",
+      "question": "What programming language is the Acme mobile app written in?",
+      "kind": "near_miss",
+      "resembles": "only backend (Go, Python) and firmware (Rust) languages are given"
+    },
+    {
+      "id": "abs09",
+      "question": "How much notice must an employee give before taking unpaid leave?",
+      "kind": "near_miss",
+      "resembles": "8 weeks' notice is stated only for parental leave"
+    },
+    {
+      "id": "abs10",
+      "question": "How long are expense receipts kept on file?",
+      "kind": "near_miss",
+      "resembles": "the expense policy gives deadlines but no retention period"
+    },
+    {
+      "id": "abs11",
+      "question": "What is the reimbursement limit for client entertainment involving alcohol?",
+      "kind": "near_miss",
+      "resembles": "it needs pre-approval and itemizing; no limit is given"
+    },
+    {
+      "id": "abs12",
+      "question": "How long must on-call engineers stay reachable after their shift ends?",
+      "kind": "near_miss",
+      "resembles": "on-call rules cover acknowledgement time and rotation only"
+    },
+    {
+      "id": "abs13",
+      "question": "Who is the CTO of Acme Robotics?",
+      "kind": "off_topic",
+      "resembles": null
+    },
+    {
+      "id": "abs14",
+      "question": "What is Acme Robotics' stock ticker symbol?",
+      "kind": "off_topic",
+      "resembles": null
+    },
+    {
+      "id": "abs15",
+      "question": "Does Acme Robotics provide gym memberships?",
+      "kind": "off_topic",
+      "resembles": null
+    },
+    {
+      "id": "abs16",
+      "question": "What is the office dress code?",
+      "kind": "off_topic",
+      "resembles": null
+    },
+    {
+      "id": "abs17",
+      "question": "How many employees work at Acme Robotics?",
+      "kind": "off_topic",
+      "resembles": null
+    },
+    {
+      "id": "abs18",
+      "question": "Where is Acme Robotics headquartered?",
+      "kind": "off_topic",
+      "resembles": null
+    }
+  ]
+}

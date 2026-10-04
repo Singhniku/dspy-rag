@@ -70,6 +70,11 @@ python -m src.evaluate --tag optimized --program models/optimized_rag.json
 # The full experiment: every config x 5 seeds, mean ± std, paired bootstrap CIs.
 # Resumable; results land in eval/results/experiment/. Takes hours on an M3.
 python -m src.experiment --mipro
+
+# CheckList behavioral tests (invariance, directional, abstention) on the
+# baseline and every compiled program; --ragas also scores the baseline's
+# answers with RAGAS. Resumable; results land in eval/results/checklist/.
+python -m src.checklist --ragas
 ```
 
 On a 16 GB Mac, start Ollama with one model resident at a time, or the
@@ -168,11 +173,116 @@ trained on. With a held-out split, five seeds and a 7B judge, the direction of
 both moves repeats (faithfulness −0.03, relevancy +0.05), but neither is
 statistically distinguishable from zero.
 
+## Behavioral tests (CheckList)
+
+An average like "faithfulness 0.96" says how good typical answers are, not how
+the system breaks. Following CheckList (Ribeiro et al., ACL 2020),
+`eval/checklist.json` holds 110 targeted questions in three test types.
+`src/checklist.py` runs them against the baseline and all 10 optimized programs
+from the experiment (BootstrapFewShot and MIPROv2, 5 seeds each).
+
+| Test type | What changes | What must happen | Tests | How it's checked |
+|---|---|---|---|---|
+| Invariance | a factual question rephrased 3 ways: synonyms, restructured, casual with typos | the key fact stays the same | 45 (15 × 3) | keyword rules (e.g. `\b20\b` for "20 days"), no judge |
+| Directional | a yes/no question negated ("allowed" → "prohibited", "required" → "not required") | the yes/no flips | 16 pairs | literal "Yes," / "No," opening; otherwise the judge, reviewed |
+| Abstention | questions the documents don't answer: 12 near-misses next to a covered fact, 6 off-topic | the answer makes no unsupported claim | 18 | the judge, every label reviewed |
+
+Failure rates (share of tests failed; optimized = mean ± std over 5 seeds):
+
+| Test | Tests | Baseline | BootstrapFewShot | MIPROv2 |
+|---|---|---|---|---|
+| **Invariance (paraphrases)** | 45 | **9%** | **2% ± 3%** | **6% ± 8%** |
+|   synonym / restructure / typo | 15 each | 13% / 7% / 7% | 4% / 1% / 1% | 9% / 4% / 5% |
+| **Directional (negations)** | 16 | **31%** | **12% ± 0%** | **18% ± 14%** |
+|   antonym / "not" | 10 / 6 | 30% / 33% | 12% / 13% | 16% / 20% |
+| **Abstention** | 18 | **22%** | **22% ± 10%** | **23% ± 5%** |
+|   near-miss / off-topic | 12 / 6 | 25% / 17% | 27% / 13% | 33% / 3% |
+
+**How the labels were checked.** I read all 60 baseline answers to the
+invariance questions: the keyword rules failed nothing by mistake. One pass is
+debatable: an answer that says "the context does not specify" and then gives
+the 10 minutes anyway. Every label the judge produced was re-read in a review
+done with Claude (148 distinct abstention answers, 28 yes/no readings). The
+judge agreed on 89% and 86% of them. All 16 of its abstention errors went the
+same way: it counted a correct refusal as an answer, for example "…is not
+specified for low-severity incidents". So the judge alone would have overstated
+abstention failures. The reviewed labels are in
+`eval/results/checklist/label_review.csv`.
+
+### What the RAGAS averages hid
+
+- **Negation is the weakest behavior.** The baseline answers 15 of 16 yes/no
+  questions correctly but only 11 of the 16 negated versions. Its five failures
+  fall into three kinds:
+  - *Wrong conclusions (2).* "Yes, an engineer is barred from deploying to
+    production at 11:00 on a Tuesday because it occurs outside the designated
+    daylight deploy hours." 11:00 is inside the window.
+  - *Self-contradictions (2).* Asked "Is economy *not* the standard class for
+    flights under 6 hours?", it answers "Yes, economy class is the standard…".
+    The explanation is right and the yes/no is backwards.
+  - *Refusal (1).* One negated question got "I don't know".
+- **Abstention failures are near-misses, and they are scope transfers.** The
+  model applies a real rule to a neighboring case the documents don't cover:
+  - AES-256 "for Confidential data", when the rule is for Restricted data;
+  - a 5-minute auto-lock for phones, when the rule is for laptops;
+  - the $1,000 home-office budget in the second year, when it is first-year only;
+  - 8 weeks' notice for unpaid leave, which the optimized programs gave and
+    the baseline didn't; that rule is for parental leave.
+
+  The main experiment reported 86–89% abstention accuracy, but its unanswerable
+  questions were mostly off-topic (a CEO, a 401(k) match). On near-misses, the
+  failure rate is 25–33%.
+- **Optimization fixed fragility, not hallucination.** BootstrapFewShot cut
+  paraphrase failures from 9% to 2% and negation failures from 31% to 12%.
+  But near-miss abstention failures didn't fall (25% → 27%), and MIPROv2's rose
+  to 33%. MIPROv2 also introduced false refusals of answerable questions: 12 of
+  its 14 paraphrase failures are refusals. Several use a phrase picked up from
+  its demonstrations, "Not supplied for this particular example."
+- **RAGAS scored the failures as passes, or the refusals as failures.** I ran
+  RAGAS faithfulness and answer relevancy on the baseline's 110 suite answers:
+
+  | Baseline suite answers | Answers | Faithfulness | Answer relevancy |
+  |---|---|---|---|
+  | answerable questions, test passed | 85 | 0.982 | 0.69 |
+  | answerable questions, test failed | 7 | 0.476 | 0.54 |
+  | unanswerable, correctly declined | 14 | 0.25 | 0.11 |
+  | unanswerable, hallucinated an answer | 4 | 0.25 | 0.69 |
+
+  Faithfulness gave a perfect 1.00 to 4 of the 11 failing answers: the 11:00
+  "barred" answer, both self-contradictions, and the phone auto-lock. Each of
+  those statements reads as supported by the retrieved text. On unanswerable
+  questions, RAGAS cannot tell a correct "I don't know" from a hallucination
+  (faithfulness 0.25 for both), and answer relevancy ranks the hallucinations
+  higher (0.69 against 0.11). An average built from these metrics rewards a
+  confident wrong answer over an honest refusal.
+
+### The CheckList result in one paragraph
+
+The averages describe a reliable system: faithfulness 0.96, context recall
+0.97, abstention 86–89%. Behavioral tests on the same pipeline show where it
+breaks. The 3B model answers 15 of 16 yes/no policy questions correctly but
+fails 31% of their negations. In 2 of those 5 failures the explanation is
+right and the leading "Yes"/"No" is backwards. When a question sits next to a
+covered fact (phones next to laptops, Confidential next to Restricted data),
+the model transfers the neighboring rule instead of declining, in 25% of
+near-miss questions. Prompt optimization repaired most of the surface
+fragility: BootstrapFewShot cut paraphrase failures from 9% to 2% and negation
+failures from 31% to 12%, with almost no seed-to-seed spread. It did nothing
+for these hallucinations: near-miss abstention failures didn't fall (25% →
+27%) and rose to 33% under MIPROv2, which also learned to refuse answerable questions. RAGAS
+could not have shown this. It gave a perfect faithfulness score to 4 of the 11
+failing baseline answers, scored correct refusals no better than
+hallucinations (0.25 faithfulness each), and gave the hallucinations higher
+answer relevancy (0.69 against 0.11). Average metrics measure how good typical
+answers are. Targeted tests are needed to find out how the system fails, and
+the LLM judge used for the labels needed checking too: it agreed with a review
+on 86–89% of them.
+
 ## What I would do next (roadmap)
 
 Done: multi-seed runs with mean ± std and paired CIs, MIPROv2, a 58-question
-set with multi-hop and unanswerable questions, a 7B judge, and a check of the
-judge against a full review.
+set with multi-hop and unanswerable questions, a 7B judge, a check of the
+judge against a full review, and CheckList behavioral tests.
 
 1. **Bigger test set, especially multi-hop.** With 35 answerable questions, the
    95% CI on a difference is about ±0.09. Detecting a 0.05 gain needs roughly
@@ -188,7 +298,11 @@ judge against a full review.
 4. **Improve retrieval for multi-hop.** Heading-aware chunking, a reranker, or
    k > 4 for questions that span documents (the 90-day question misses its
    password chunk).
-5. **A stronger correctness judge.** The 7B judge is fine for RAGAS-style
+5. **Target the failures CheckList found.** Add negated and near-miss
+   questions to the optimizer's training split, and pin "decline when the
+   documents don't cover the exact case" in the signature. Then re-run the
+   suite to see whether near-miss abstention moves.
+6. **A stronger correctness judge.** The 7B judge is fine for RAGAS-style
    checks but unreliable on multi-step answers (58% agreement). Use a larger
    local model or a frontier API model as the judge, or as a second opinion
    on disagreements.
@@ -198,7 +312,9 @@ judge against a full review.
 ```
 data/                    # the knowledge base (fictional company policy .md files)
 eval/qa_gold.json        # 58 gold questions: type, train/test split, ground truth
+eval/checklist.json      # 110 CheckList tests: paraphrases, negation pairs, unanswerable
 eval/results/experiment/ # per-run CSVs, per_run_summary.csv, paired_deltas.csv, summary.md
+eval/results/checklist/  # answers, judge labels, label_review.csv, test_results.csv, summary.md
 models/experiment/       # the compiled program for every optimizer x seed
 src/config.py            # all tunable settings (models, chunking, top-k, seeds)
 src/ingest.py            # chunk + embed + store into ChromaDB
@@ -208,17 +324,24 @@ src/gold.py              # gold-set loading (split, answerable)
 src/evaluate.py          # RAGAS + abstention scoring with a separate judge model
 src/optimize.py          # BootstrapFewShot / MIPROv2 prompt optimization (seeded)
 src/experiment.py        # multi-seed experiment runner and statistics
+src/checklist.py         # CheckList behavioral tests and report
 src/ask.py               # interactive CLI
 ```
 
 ## Honest limitations
 
+- **The CheckList suite is small and hand-written**: 15 paraphrase groups, 16
+  negation pairs and 18 unanswerable questions. One failure moves a rate by
+  6–7 points, and 3 of the baseline's 4 paraphrase failures come from a single
+  original question it refused ("What language is the robot fleet firmware
+  written in?").
+
 - **The corpus is fictional and small** by design, so ground-truth answers are
   known and the local model can't have memorized them — every correct answer
   must come from retrieval. The flip side: 42 test questions over 4 short
   documents is a small test, and the confidence intervals above say so.
-- **The headline correctness grades come from a review done with Claude**, not
-  from independent human annotators. The rubric is fixed (1 / 0.5 / 0), and
+- **The headline correctness grades and the CheckList judge labels come from a
+  review done with Claude**, not from independent human annotators. The rubric is fixed (1 / 0.5 / 0), and
   every grade is published next to the 7B judge's grade so anyone can re-check
   them.
 - **RAGAS metrics are LLM estimates.** Answer relevancy in particular scored

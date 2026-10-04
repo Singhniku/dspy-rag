@@ -1,0 +1,177 @@
+id,answer,field,judge,reviewed
+abs01,Does not know.,declined,1,1
+abs01,I don't know.,declined,1,1
+abs01,The context does not provide a daily meal allowance for traveling in South America.,declined,1,1
+abs01,The daily meal allowance when traveling in South America is $75.,declined,0,0
+abs01,"The provided information only covers North America ($75) and Europe (€70), but does not include South America.",declined,1,1
+abs01,There is no specified daily meal allowance for traveling in South America.,declined,1,1
+abs01,There is no specified daily meal allowance provided for travel in South America.,declined,1,1
+abs01,"Unfortunately, the provided policy documents do not specify a daily meal allowance for travel in South America.",declined,1,1
+abs02,I don't know.,declined,1,1
+abs02,Not specified in the provided context.,declined,1,1
+abs02,"Not specified, as the provided policy documents do not provide information on how many days of annual leave part-time employees accrue.",declined,1,1
+abs02,Part-time employees do not have a specified annual leave accrual rate in the provided context.,declined,1,1
+abs02,The number of days of annual leave accrued by part-time employees is not specified in the provided context.,declined,1,1
+abs02,The policy document does not specify how much annual leave part-time employees accrue.,declined,1,1
+abs02,The policy does not specify how many days of annual leave part-time employees accrue.,declined,1,1
+abs02,"The provided policy documents do not cover part-time employees, so the answer is not available.",declined,1,1
+abs03,AES-256 is required for Confidential data.,declined,0,0
+abs03,AES-256 is the encryption standard required for Confidential data.,declined,0,0
+abs03,AES-256 is the required encryption standard for Confidential data.,declined,0,0
+abs03,AES-256.,declined,0,0
+abs03,I don't know.,declined,1,1
+abs03,"Restricted data, including customer PII, must be encrypted at rest using AES-256.",declined,0,0
+abs03,The encryption standard required for Restricted data is AES-256.,declined,0,0
+abs04,5 minutes,declined,0,0
+abs04,A company phone screen must auto-lock after 5 minutes of inactivity.,declined,0,0
+abs04,"After 5 minutes of inactivity, a company phone screen must auto-lock.",declined,0,0
+abs04,After 5 minutes.,declined,0,0
+abs04,The company phone screen must auto-lock after 5 minutes of inactivity.,declined,0,0
+abs05,$0,declined,0,0
+abs05,"$0, as the initial one-time expense limit for home-office equipment is $1,000 and there is no mention of an additional limit for subsequent years.",declined,0,0
+abs05,"$1,000",declined,0,0
+abs05,"$1,000 (the same amount as the first year).",declined,0,0
+abs05,"An employee can expense up to $1,000 for home-office equipment in their second year.",declined,0,0
+abs05,"An employee cannot expense more than $1,000 for home-office equipment in any given year.",declined,0,0
+abs05,The amount that can be expensed for home-office equipment in the second year is not specified in the provided context.,declined,1,1
+abs05,"The policy does not explicitly state how much an employee can expense for home-office equipment in their second year. It only provides the initial limit of $1,000 for the first year.",declined,1,1
+abs05,"Unfortunately, the provided policy documents do not mention how much an employee can expense for home-office equipment in their second year. The $1,000 limit only applies to the first year.",declined,1,1
+abs06,I don't know.,declined,1,1
+abs06,Not supplied for this particular example.,declined,1,1
+abs06,The Security Operations Center's first-response time for low-severity incidents is not specified in the provided context.,declined,1,1
+abs06,"The Security Operations Center's first-response time is guaranteed to be within 15 minutes for critical incidents, but it is not specified for low-severity incidents.",declined,0,1
+abs06,The Security Operations Center's first-response time is not specified for low-severity incidents in the provided context.,declined,1,1
+abs06,"The Security Operations Center's first-response time is not specified for low-severity incidents, as it is only guaranteed for critical incidents.",declined,1,1
+abs06,The context does not specify a first-response time for low-severity incidents.,declined,1,1
+abs06,"The provided information does not specify a first-response time for low-severity incidents, so it is unclear what that time frame would be.",declined,1,1
+abs07,I don't know.,declined,1,1
+abs07,"It's unknown how much parental leave contractors receive, as there is no mention of their parental leave policies in the provided context.",declined,1,1
+abs07,"Not supplied for this particular example, as the provided policy documents do not cover parental leave for contractors.",declined,1,1
+abs07,The context does not provide any information about contractors receiving parental leave.,declined,1,1
+abs07,The provided context does not mention parental leave for contractors. It only mentions parental leave policies for full-time employees.,declined,1,1
+abs07,"The provided information does not specify how much parental leave contractors receive, as it only covers company policies for full-time employees.",declined,1,1
+abs07,There is no information available on contractor parental leave.,declined,1,1
+abs07,There is no information provided in the context about parental leave for contractors.,declined,1,1
+abs07,Unknown.,declined,1,1
+abs08,I don't know what programming language the Acme mobile app is written in.,declined,1,1
+abs08,I don't know.,declined,1,1
+abs08,The programming language used by the Acme mobile app is not specified in the provided context.,declined,1,1
+abs08,The programming language used for the Acme mobile app is not specified in the provided context.,declined,1,1
+abs08,The provided context does not specify the programming language used for the Acme mobile app.,declined,1,1
+abs08,The provided information does not specify the programming language used for the Acme mobile app. It only mentions the languages used for backend services (Go and Python).,declined,1,1
+abs08,Unknown,declined,1,1
+abs09,"An employee must give at least 8 weeks written notice before commencing parental leave, but the policy does not specify a similar requirement for notice before taking unpaid leave.",declined,0,1
+abs09,An employee must give at least 8 weeks written notice before taking unpaid leave.,declined,0,0
+abs09,"At least 8 weeks written notice is required for all types of leave, including parental and unpaid leave.",declined,0,0
+abs09,At least 8 weeks.,declined,0,0
+abs09,"Employees must give at least 8 weeks written notice before commencing parental leave, but it is not specified if this applies to all types of unpaid leave. However, since the question specifically asks about unpaid leave and no further details are provided in the context, we can infer that the same level of notice may be required for other types of unpaid leave.",declined,0,0
+abs09,Employees must give at least 8 weeks written notice before taking unpaid leave.,declined,0,0
+abs09,The amount of notice required for taking unpaid leave is not specified in the provided context.,declined,1,1
+abs09,The amount of notice required for unpaid leave is not specified in the provided context.,declined,1,1
+abs09,"We don't know how much notice must be given before taking unpaid leave, as the policy does not specify an exact amount.",declined,1,1
+abs10,"Expense receipts are kept on file for a maximum of 90 days, after which they are no longer eligible for reimbursement.",declined,0,0
+abs10,Expense receipts are kept on file for at least 30 days.,declined,0,0
+abs10,I don't know how long expense receipts are kept on file.,declined,1,1
+abs10,I don't know.,declined,1,1
+abs10,Less than or equal to 90 days.,declined,0,0
+abs10,Not supplied for this particular example.,declined,1,1
+abs10,The exact length of time that expense receipts are kept on file is not specified in the policy.,declined,0,1
+abs10,The exact length of time that expense receipts are kept on file is not specified in the provided context.,declined,1,1
+abs10,The length of time that expense receipts are kept on file is not specified in the provided context.,declined,1,1
+abs10,The length of time that expense receipts are kept on file is not specified in the provided policy documents.,declined,1,1
+abs11,"Client entertainment involving alcohol is reimbursable only with prior approval, but the specific amount or limit of reimbursement is not specified in the provided context.",declined,0,1
+abs11,Client entertainment involving alcohol requires pre-approval.,declined,1,1
+abs11,I don't know the specific reimbursement limit for client entertainment involving alcohol.,declined,1,1
+abs11,"Reimbursement for client entertainment involving alcohol is not specified, only that it requires pre-approval and must be itemized separately.",declined,1,1
+abs11,"The context does not specify a numerical reimbursement limit for client entertainment involving alcohol, only that it requires pre-approval and must be itemized separately.",declined,0,1
+abs11,"The reimbursement limit for client entertainment involving alcohol is not explicitly stated in the provided context. However, it does mention that such expenses require pre-approval and must be itemized separately.",declined,1,1
+abs11,"There is no specific reimbursement limit mentioned for client entertainment involving alcohol, only that it requires pre-approval and cannot be reimbursed.",declined,0,1
+abs11,There is no specified reimbursement limit for client entertainment involving alcohol in the provided context.,declined,1,1
+abs11,There is no specified reimbursement limit for client entertainment involving alcohol in the provided policy document.,declined,0,1
+abs11,"There is no specified reimbursement limit for client entertainment involving alcohol, but it is clearly stated that such expenses are not reimbursable.",declined,0,1
+abs11,"There is no specified reimbursement limit for client entertainment involving alcohol, only that it requires pre-approval and cannot be reimbursed.",declined,0,1
+abs12,"At least 15 minutes (guaranteed first response time for critical incidents), but the exact duration is not specified in the provided context.",declined,0,0
+abs12,It is not specified in the provided context how long on-call engineers must stay reachable after their shift ends.,declined,1,1
+abs12,Not specified in the provided context.,declined,1,1
+abs12,"On-call engineers do not have a specific requirement for staying reachable after their shift ends, but they must acknowledge critical pages within 10 minutes.",declined,0,1
+abs12,"On-call engineers do not have a specific time limit for staying reachable after their shift ends, but they are expected to be available and responsive during their designated on-call period.",declined,0,1
+abs12,"On-call engineers do not have a specific time limit for staying reachable after their shift ends, but they must acknowledge any critical page within 10 minutes of taking the shift.",declined,0,1
+abs12,"On-call engineers do not have an explicit requirement for how long they must stay reachable after their shift ends, but they cannot be on call for more than one week in any four-week period.",declined,0,1
+abs12,On-call engineers typically need to stay reachable for at least 2-4 hours after their shift ends.,declined,0,0
+abs12,The context does not provide information on how long on-call engineers must stay reachable after their shift ends.,declined,1,1
+abs12,The provided context does not specify a minimum duration for on-call engineers to remain reachable after their shift ends.,declined,1,1
+abs13,I don't know who the CTO of Acme Robotics is.,declined,1,1
+abs13,I don't know.,declined,1,1
+abs13,Not supplied for this particular example.,declined,1,1
+abs13,The CTO is not specified in the provided context.,declined,1,1
+abs13,The CTO of Acme Robotics is not mentioned in the provided context.,declined,1,1
+abs13,There is no information available about the CTO in the provided context.,declined,1,1
+abs13,There is no information available about the CTO of Acme Robotics in the provided context.,declined,1,1
+abs13,Unknown,declined,1,1
+abs14,Acme Robotics' stock ticker symbol is not specified in the provided context.,declined,1,1
+abs14,I couldn't find the information on Acme Robotics' stock ticker symbol in the provided context.,declined,1,1
+abs14,I couldn't find the required information about Acme Robotics' stock ticker symbol in the provided context.,declined,1,1
+abs14,I don't know the stock ticker symbol of Acme Robotics.,declined,1,1
+abs14,I don't know.,declined,1,1
+abs14,Not supplied for this particular example.,declined,1,1
+abs14,"The context does not provide this information, so it is not available.",declined,1,1
+abs14,The stock ticker symbol is not mentioned in the provided context.,declined,1,1
+abs15,Acme Robotics does not provide gym memberships.,declined,0,0
+abs15,Gym membership is not mentioned or addressed in the provided company policies.,declined,1,1
+abs15,I don't know.,declined,1,1
+abs15,No information is provided in the context about Acme Robotics providing gym memberships.,declined,1,1
+abs15,"No, Acme Robotics does not provide gym memberships.",declined,0,0
+abs15,"No, the provided context does not indicate that Acme Robotics provides gym memberships.",declined,0,1
+abs15,"No, there is no indication that Acme Robotics provides gym memberships.",declined,0,1
+abs16,I don't know.,declined,1,1
+abs16,"No, there is no dress code mentioned in the provided policy documents.",declined,0,1
+abs16,Not supplied for this particular example.,declined,1,1
+abs16,The office dress code is not specified in the provided context.,declined,1,1
+abs16,The office dress code is not specified in the provided policy documents.,declined,1,1
+abs16,There is no information provided in the context about the office dress code.,declined,1,1
+abs16,There is no specific office dress code mentioned in the provided context.,declined,1,1
+abs16,Unknown,declined,1,1
+abs17,I don't know how many employees work at Acme Robotics.,declined,1,1
+abs17,I don't know.,declined,1,1
+abs17,Not supplied for this particular example.,declined,1,1
+abs17,The number of employees working at Acme Robotics is not mentioned in the provided context.,declined,1,1
+abs17,The provided context does not contain this information.,declined,1,1
+abs17,"Unfortunately, the provided context does not provide enough information to determine the total number of employees at Acme Robotics.",declined,1,1
+abs17,"Unfortunately, the provided context does not provide enough information to determine the total number of employees working at Acme Robotics.",declined,1,1
+abs17,Unknown,declined,1,1
+abs18,I don't know where Acme Robotics is headquartered.,declined,1,1
+abs18,I don't know.,declined,1,1
+abs18,"Not supplied for this particular example, as the question about headquarters is not present in the given context.",declined,1,1
+abs18,The headquarters location is not specified in the given policy documents.,declined,1,1
+abs18,The headquarters location of Acme Robotics is not specified in the provided context.,declined,1,1
+abs18,The location of Acme Robotics' headquarters is unknown based on the provided context.,declined,1,1
+abs18,The question about headquarters is not mentioned in the provided context.,declined,1,1
+abs18,Unknown,declined,1,1
+dir02/negated,An engineer is not barred from deploying to production at 11:00 on a Tuesday.,yes_no,no,no
+dir02/negated,The policy does not provide enough detail to determine whether the engineer is barred from deploying at 11:00 on a Tuesday.,yes_no,unclear,unclear
+dir03/negated,MFA is mandatory for systems accessing customer data.,yes_no,no,no
+dir03/negated,Multi-factor authentication is not optional for systems that access customer data; it is mandatory.,yes_no,no,no
+dir04/original,Not specified in the provided context.,yes_no,unclear,unclear
+dir04/original,"The provided policy documents do not cover how unused sick leave is handled after the calendar year ends, so the information on this topic is not available.",yes_no,unclear,unclear
+dir04/original,Unused sick leave does not carry over into the next year.,yes_no,no,no
+dir05/negated,"Employees are forbidden from expensing a laptop personally, as laptops and phones are provided by the IT department.",yes_no,yes,yes
+dir05/negated,Employees are forbidden from expensing a laptop personally.,yes_no,yes,yes
+dir06/negated,The policy does not provide clear guidance on merging a pull request with fewer than two approvals. It only specifies the minimum requirement of at least two approvals for merge approval.,yes_no,unclear,unclear
+dir09/negated,"It is unclear whether full-disk encryption is required on all company laptops, and the policy does not provide explicit guidance on this point.",yes_no,unclear,unclear
+dir11/negated,An engineer is not allowed to be on call for more than one week in a row.,yes_no,no,yes
+dir11/negated,An engineer is not allowed to be on call for more than one week in any four-week period.,yes_no,unclear,yes
+dir11/negated,An engineer is not allowed to be on call for two weeks in a row.,yes_no,yes,yes
+dir11/negated,There is no explicit information stating that an engineer cannot be on call for two weeks in a row. The policy only restricts being on call for more than one week within a 4-week cycle.,yes_no,no,no
+dir11/original,An engineer cannot be on call for more than one week in any four-week period.,yes_no,no,no
+dir11/original,An engineer cannot be on call for two weeks in a row.,yes_no,no,no
+dir11/original,"It is not explicitly stated whether an engineer can be on call for two weeks in a row or not. However, given the policy's intent to prevent overwork, it is likely that being on call for consecutive weeks would be subject to review and approval by management.",yes_no,unclear,unclear
+dir11/original,"The policy does not explicitly prohibit engineers from being on call for two weeks in a row, but it does limit the frequency of on-call shifts to once every four weeks. It is unclear if this means consecutive weeks are allowed or not.",yes_no,unclear,unclear
+dir12/original,Employees should not investigate a suspected security incident themselves before reporting it.,yes_no,no,no
+dir13/negated,"PostgreSQL is not explicitly stated as the only standard database, but rather as one of the options (along with Go and Python) for backend services. New services must follow specific guidelines before introducing a new database technology.",yes_no,unclear,unclear
+dir13/original,PostgreSQL is the standard database.,yes_no,no,yes
+dir14/negated,Continuity of service is preserved during unpaid leave.,yes_no,yes,yes
+dir14/negated,I don't know.,yes_no,unclear,unclear
+dir14/original,Unpaid leave does not affect continuity of service.,yes_no,no,no
+dir15/negated,Hotel minibar charges are non-reimbursable.,yes_no,yes,yes
+dir16/negated,"A production deployment can proceed without a rollback plan, but it must still be accompanied by one when the deployment is complete.",yes_no,unclear,yes
+dir16/original,It is unclear whether every production deployment must have a documented rollback plan based on the provided context.,yes_no,unclear,unclear
