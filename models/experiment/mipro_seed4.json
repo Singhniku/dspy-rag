@@ -1,0 +1,45 @@
+{
+  "generate.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "question": "Where is multi-factor authentication mandatory?",
+        "answer": "Multi-factor authentication is mandatory for all systems that access customer data."
+      },
+      {
+        "question": "How much parental leave does the secondary caregiver receive?",
+        "answer": "The secondary caregiver receives 6 weeks of parental leave."
+      }
+    ],
+    "signature": {
+      "instructions": "Answer the question using ONLY the provided context that mentions flight booking policies. If the context does not contain the answer, reply that you don't know. Do not use outside knowledge and do not invent facts, numbers, or policies.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "relevant excerpts from company policy documents"
+        },
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "a concise answer grounded in the context"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

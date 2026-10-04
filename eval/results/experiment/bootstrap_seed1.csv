@@ -1,0 +1,1003 @@
+id,type,question,ground_truth,answer,contexts,error,faithfulness,answer_relevancy,gold_similarity,abstained,context_precision,context_recall,correctness
+q01,single_hop,"How many days of paid annual leave do full-time employees get, and how many can be carried over?","Full-time employees accrue 20 days of paid annual leave per year, and may carry over a maximum of 5 unused days into the next year.","Full-time employees get 20 days of paid annual leave per year, with a maximum carryover of 5 unused annual leave days into the following calendar year.","# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must",False,1.0,0.8346732176440541,0.9501502513885498,0,0.9999999999,1.0,1.0
+q03,single_hop,How much paid parental leave does the primary caregiver receive and how much notice is required?,"The primary caregiver receives 16 weeks of fully paid parental leave, and must give at least 8 weeks written notice before starting it.",The primary caregiver receives 16 weeks of fully paid parental leave and must give at least 8 weeks written notice before taking parental leave.,"s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla",False,1.0,0.8605666234592089,0.987550973892212,0,0.9999999999,1.0,1.0
+q06,single_hop,What is the nightly hotel limit in high-cost cities and which cities count as high-cost?,"The hotel limit is $350 per night in high-cost cities, which are New York, San Francisco, London, Tokyo, and Zurich.","The nightly hotel limit in high-cost cities is $350, and the cities that count as high-cost are New York, San Francisco, London, Tokyo, and Zurich.","nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.
+---
+for the duration.",False,1.0,0.9140002821283448,0.9173277616500854,0,0.99999999995,1.0,1.0
+q07,single_hop,What are the password requirements at Acme Robotics?,"Passwords must be at least 14 characters with upper case, lower case, a number, and a symbol, and must be rotated every 90 days.","Passwords at Acme Robotics must be at least 14 characters long, contain upper case, lower case, numbers, and symbols, and must be rotated every 90 days.","# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic",False,1.0,0.9931051675254644,0.7636545300483704,0,0.9999999999,1.0,1.0
+q09,single_hop,How quickly must a lost or stolen laptop be reported?,A lost or stolen device must be reported to the Security Operations Center within 1 hour of discovery.,A lost or stolen laptop must be reported to the Security Operations Center within 1 hour of discovery.,"ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.",False,1.0,0.8092634116265361,0.8410979509353638,0,0.9999999999,1.0,1.0
+q10,single_hop,How many approvals does a pull request need before merging?,"A pull request needs at least two approvals, and at least one must come from a designated code owner of the affected module.",A pull request needs at least two approvals before merging.,"# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv",False,1.0,0.7976138991463293,0.6348085403442383,0,0.9999999999,1.0,1.0
+q11,single_hop,What is the 'daylight deploy' rule?,Production deployments must occur between 10:00 and 16:00 on business days so engineers are available to respond to issues; this is the daylight deploy rule.,The 'daylight deploy' rule requires all deployments to production to take place between 10:00 and 16:00 on business days.,"s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+for the duration.",False,1.0,0.8201471972033781,0.932486355304718,0,0.7499999999625,1.0,1.0
+q12,single_hop,"How fast must an on-call engineer acknowledge a critical page, and how are on-call shifts compensated?","The on-call engineer must acknowledge a critical page within 10 minutes, and each completed on-call week is compensated with an additional day of leave.","An on-call engineer must acknowledge a critical page within 10 minutes, and they are compensated with an additional day of leave per completed week for their on-call shifts.","a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee",False,1.0,0.6294659074283482,0.9790270924568176,0,0.9999999999,1.0,1.0
+q13,single_hop,"How many days of paid sick leave do employees get, and does unused sick leave carry over?",Employees get 10 days of paid sick leave per year. Sick leave does not carry over; it resets on January 1.,"Employees get 10 days of paid sick leave per year, and unused sick leave does not carry over.","# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must",False,1.0,0.710535004108577,0.9077826738357544,0,0.99999999995,1.0,1.0
+q14,single_hop,At what rate does annual leave accrue?,"Annual leave accrues at 1.67 days per completed month of service, which adds up to 20 days per year.",Annual leave accrues at a rate of 1.67 days per completed month of service.,"# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla",False,1.0,0.6201594842319497,0.9375540614128112,0,0.9999999999,1.0,1.0
+q17,single_hop,Within what period must parental leave be taken?,Parental leave must be taken within 12 months of the birth or adoption of a child.,Within 12 months of the birth or adoption of a child.,"Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla",False,1.0,0.4332209782706708,0.6314762830734253,0,0.99999999995,1.0,1.0
+q19,single_hop,Through which system must expense claims be submitted?,Expense claims must be submitted through the Concord portal.,Expense claims must be submitted through the Concord portal.,"# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices",False,1.0,0.8737734139036527,1.0000001192092896,0,0.9999999999,1.0,1.0
+q20,single_hop,What flight class can employees book for flights longer than 6 hours?,Flights longer than 6 hours may be booked in premium economy with prior manager approval. Economy is the standard for flights under 6 hours.,Flights longer than 6 hours can be booked in premium economy with prior manager approval.,"nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic",False,1.0,0.7822297798791503,0.9269475936889648,0,0.99999999995,1.0,1.0
+q21,single_hop,What is the daily meal allowance while traveling?,The daily meal allowance while traveling is $75 in North America and €70 in Europe.,The daily meal allowance while traveling is $75 in North America and €70 in Europe.,"nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g",False,1.0,0.8662587136619447,0.9999998807907104,0,0.9999999999,1.0,1.0
+q23,single_hop,"How much can a new employee expense for a home-office setup, and what does it cover?","Employees may expense up to $1,000 for a home-office setup in their first year, covering a desk, chair, and monitor.","A new employee can expense up to $1,000 for a home-office setup in their first year, which covers the cost of a desk, chair, and monitor.","rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.",False,1.0,0.8283621064273159,0.9576359391212464,0,0.9999999999,1.0,1.0
+q25,single_hop,What are the rules for client entertainment that involves alcohol?,Client entertainment involving alcohol requires pre-approval and must be itemized separately.,"Client entertainment that involves alcohol requires pre-approval and must be itemized separately, and it is never reimbursable.","personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+for the duration.",False,1.0,0.92658776394596,0.9245420694351196,0,0.9999999999,1.0,1.0
+q26,single_hop,What are Acme Robotics' data classification tiers?,"Data is classified into four tiers: Public, Internal, Confidential, and Restricted.","Acme Robotics' data classification tiers are: Public, Internal, Confidential, and Restricted.","ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv",False,1.0,1.0,0.5733349919319153,0,0.99999999995,1.0,1.0
+q27,single_hop,What types of data are classified as Restricted?,Restricted data includes customer PII and robot telemetry logs.,Restricted data includes customer PII and robot telemetry logs.,"ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ckend services are written in Go and Python. The standard database is PostgreSQL; new services must not introduce a new database technology without Architecture Review Board approval. All services must expose a /health endpoint and emit structured JSON logs. The robot fleet firmware is written in Rust.",False,1.0,0.8979623433431672,1.0,0,0.9999999999,1.0,1.0
+q28,single_hop,What security settings are required on company laptops?,"Company laptops must have full-disk encryption enabled, and the screen must auto-lock after 5 minutes of inactivity.",Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity.,"ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente",False,1.0,0.8940781952706064,0.9984157681465148,0,0.99999999995,1.0,1.0
+q29,single_hop,Are personal USB storage devices allowed on engineering workstations?,No. Personal USB storage devices are prohibited on all engineering workstations.,"No, personal USB storage devices are not allowed on engineering workstations.","ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente",False,1.0,0.9999999999999998,0.9641467928886414,0,0.9999999999,1.0,1.0
+q31,single_hop,What should an employee do if they suspect a security incident?,They must report it immediately to security@acmerobotics.example and must never try to investigate or remediate it themselves before reporting it.,An employee should report any suspected security incident to security@acmerobotics.example immediately.,"ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie",False,1.0,0.5673487678786543,0.790584146976471,0,0.99999999995,1.0,1.0
+q32,single_hop,How large can a pull request be?,Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs.,A pull request can be no larger than 400 lines of changed code.,"# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+for the duration.",False,1.0,0.6917803178023335,0.8335958123207092,0,0.7499999999625,1.0,1.0
+q33,single_hop,What deployment strategy does Acme Robotics use for production?,Acme Robotics deploys to production using a blue-green strategy.,Acme Robotics uses a blue-green deployment strategy for production.,"s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices",False,1.0,1.0000000000000002,0.9738926887512208,0,0.99999999995,1.0,1.0
+q34,single_hop,What must accompany every production deployment?,Every production deployment must be accompanied by a rollback plan documented in the release ticket.,A rollback plan must accompany every production deployment.,"s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+ckend services are written in Go and Python. The standard database is PostgreSQL; new services must not introduce a new database technology without Architecture Review Board approval. All services must expose a /health endpoint and emit structured JSON logs. The robot fleet firmware is written in Rust.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must",False,1.0,0.6546930890474013,0.9026308059692384,0,0.7499999999625,1.0,1.0
+q35,single_hop,"How long is an on-call shift, and how often can an engineer be on call?","On-call shifts run Monday to Monday as a weekly rotation, and no engineer may be on call for more than one week in any four-week period.","An on-call shift typically lasts one week, and an engineer can be on call no more than once every four weeks.","a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+for the duration.
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.",False,1.0,0.9648026701585432,0.8503121733665466,0,0.9999999999,1.0,1.0
+q36,single_hop,"What is the standard database, and what is required to introduce a different one?",The standard database is PostgreSQL. A new database technology requires Architecture Review Board approval.,"To introduce a different database, an Architecture Review Board approval is required.","ckend services are written in Go and Python. The standard database is PostgreSQL; new services must not introduce a new database technology without Architecture Review Board approval. All services must expose a /health endpoint and emit structured JSON logs. The robot fleet firmware is written in Rust.
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must",False,1.0,0.6564389845133551,0.8004415035247803,0,0.7499999999625,1.0,1.0
+q37,multi_hop,"If an employee loses their company laptop, whom must they notify and how quickly, and can they buy a replacement and expense it?",They must report it to the Security Operations Center within 1 hour of discovery. They cannot expense a replacement: laptops are provided by the IT department and must not be expensed personally.,"An employee who loses their company laptop must notify the Security Operations Center within 1 hour of discovery and can request a replacement, which they can then expense according to the company's equipment policy.","ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must",False,0.3333333333333333,0.8463893902163335,0.8147338628768921,0,0.9999999999,1.0,0.0
+q39,multi_hop,Can an engineer deploy to production at 15:00 on a Friday?,"No. The daylight deploy rule allows production deployments between 10:00 and 16:00 on business days, but Friday afternoon deployments after 14:00 are frozen.","No, an engineer cannot deploy to production at 15:00 on a Friday because it falls outside the allowed time window of 10:00-16:00.","s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee",False,1.0,0.9502208403356944,0.7859959602355957,0,0.9999999999,0.5,1.0
+q40,multi_hop,"An employee submits a $300-per-night London hotel bill 45 days after the stay. Is the rate within policy, and what approval does the late claim need?","The rate is within policy, because London is a high-cost city with a $350 nightly limit. Because the claim is more than 30 days old, it needs director-level approval and may be rejected.","The rate of $300 per night is within policy, but the late claim requires director-level approval due to exceeding the 30-day submission deadline.","nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.",False,0.6666666666666666,0.0,0.6610157489776611,0,0.999999999975,1.0,1.0
+q41,multi_hop,What response-time commitments apply to critical issues for the on-call engineer and for the Security Operations Center?,"The on-call engineer must acknowledge a critical page within 10 minutes, and the Security Operations Center guarantees a first response within 15 minutes for critical incidents.","For both the on-call engineer and the Security Operations Center, there is a guaranteed response time commitment of 15 minutes for critical issues.","a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee",False,1.0,0.9442687732687062,0.8583895564079285,0,0.0,1.0,0.0
+q42,multi_hop,"Which Acme Robotics policies set a 90-day limit, and what do they say?","The security policy requires passwords to be rotated every 90 days, and the expense policy says claims older than 90 days will not be reimbursed.","Claims submitted through the Concord portal must be done within 30 days of the expense being incurred, and claims older than 90 days will not be reimbursed.","# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.",False,1.0,0.3603454580433606,0.4310330152511596,1,0.0,0.5,0.0
+q43,multi_hop,"How is robot telemetry data classified and protected, and in what language is the robot fleet firmware written?","Robot telemetry logs are Restricted data, so they must be encrypted at rest with AES-256 and accessed only from company-managed devices on the corporate VPN. The robot fleet firmware is written in Rust.",Robot telemetry data is classified as Restricted data and protected by encryption (AES-256). The robot fleet firmware is written in Rust.,"ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+ckend services are written in Go and Python. The standard database is PostgreSQL; new services must not introduce a new database technology without Architecture Review Board approval. All services must expose a /health endpoint and emit structured JSON logs. The robot fleet firmware is written in Rust.
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee",False,1.0,0.7743599784865987,0.7995412945747375,0,0.9999999999,1.0,1.0
+q44,multi_hop,What authentication requirements apply to an engineer with production access?,"They need a password of at least 14 characters with upper case, lower case, a number, and a symbol, rotated every 90 days; MFA for systems that access customer data; and a hardware security key (YubiKey), which Acme uses for engineering staff with production access.",The context does not provide specific information on the authentication requirements for engineers with production access. It only mentions MFA for systems accessing customer data.,"# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.",False,0.5,0.0,0.5781924724578857,1,0.9999999999,1.0,0.0
+q47,multi_hop,Which kinds of leave reset or are lost at the turn of the calendar year?,"Sick leave does not carry over and resets on January 1, and annual leave beyond 5 unused days is forfeited on December 31.",Sick leave and annual leave both reset or are lost at the turn of the calendar year.,"# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-",False,1.0,0.6253788379062947,0.8055722713470459,0,0.9999999999,1.0,0.0
+q48,multi_hop,"If a laptop holding customer PII is stolen, how fast must it be reported, and how must that data be protected?","The theft must be reported to the Security Operations Center within 1 hour of discovery. Customer PII is Restricted data, which must be encrypted at rest using AES-256 and accessed only from company-managed devices on the corporate VPN.","A laptop holding customer PII must be reported to the Security Operations Center within 1 hour of discovery, and the data must be protected by encryption using AES-256.","ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+# Acme Robotics — Information Security Policy
+
+## Passwords & Authentication
+All employee accounts must use passwords of at least 14 characters containing upper case, lower case, a number, and a symbol. Passwords must be rotated every 90 days. Multi-factor authentication (MFA) is mandatory for all systems that access customer data. Acme Robotics uses hardware security keys (YubiKeys) for engineering staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tie",False,0.5,0.6394508420443287,0.756879448890686,0,0.9999999999,1.0,1.0
+q50,unanswerable,How many days of bereavement leave do employees get?,"The provided policy documents do not cover bereavement leave, so the answer is not available.",I don't know.,"s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.
+
+## Unpaid Leave
+Employees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.",False,,,0.0580988675355911,1,,,
+q51,unanswerable,What is the daily meal allowance when traveling in Asia?,The policies do not give a meal allowance for Asia; they only specify $75 per day in North America and €70 in Europe.,There is no specified daily meal allowance for traveling in Asia.,"nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+for the duration.",False,,,0.7599611282348633,1,,,
+q52,unanswerable,Who is the CEO of Acme Robotics?,"The provided policy documents do not cover who the CEO is, so the answer is not available.",I don't know who the CEO of Acme Robotics is.,"# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+s before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the ""daylight deploy"" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv",False,,,0.4836380183696747,1,,,
+q53,unanswerable,How many days per week may employees work remotely?,"The provided policy documents do not cover a remote-work policy, so the answer is not available.",The context does not provide information on how many days per week employees may work remotely.,"# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+a rollback plan documented in the release ticket.
+
+## On-Call
+Engineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.
+
+## Technology Standards
+Backend services are written in Go and Python. The standard database is PostgreSQL; new services must
+---
+s of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.
+
+## Parental Leave
+Acme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.",False,,,0.5158542394638062,1,,,
+q54,unanswerable,What is the mileage reimbursement rate for using a personal car on business?,"The provided policy documents do not cover a mileage reimbursement rate, so the answer is not available.",I don't know.,"rk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.
+
+## Equipment
+Employees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.
+
+## Non-Reimbursable Items
+Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente
+---
+nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.
+
+## Accommodation
+Hotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla
+---
+# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client entertainment involving alcohol requires pre-approval and must be itemized separately.",False,,,0.0503078438341617,1,,,
+q56,unanswerable,How long are security logs retained?,"The provided policy documents do not cover a log retention period, so the answer is not available.",I don't know.,"ryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices must be reported to the Security Operations Center within 1 hour of discovery. Personal USB storage devices are prohibited on all engineering workstations.
+
+## Incident Response
+Any suspected security incident must be reported to security@acmerobotics.example immediately. The Security Operations Center operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employee
+---
+ter operates 24/7 and guarantees a first response within 15 minutes for critical incidents. Employees must never attempt to investigate or remediate an incident themselves before reporting it.
+---
+for the duration.
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic",False,,,0.012849049642682,1,,,
+q58,unanswerable,Does Acme Robotics offer tuition reimbursement for further education?,"The provided policy documents do not cover tuition reimbursement, so the answer is not available.",Acme Robotics does not offer tuition reimbursement for further education.,"# Acme Robotics — Expense & Reimbursement Policy
+
+## Submission Deadlines
+All expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.
+
+## Travel
+Economy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv
+---
+# Acme Robotics — Leave & Time-Off Policy
+
+## Annual Leave
+Full-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.
+
+## Sick Leave
+Employees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic
+---
+# Acme Robotics — Engineering Handbook
+
+## Code Review
+Every pull request requires at least two approvals before it can be merged into the main branch. At least one approval must come from a designated code owner of the affected module. Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs. The continuous integration suite must pass before any merge.
+
+## Deployment
+Acme Robotics deploys to production using a blue-green strategy.
+---
+ng staff with production access.
+
+## Data Classification
+Acme Robotics classifies data into four tiers: Public, Internal, Confidential, and Restricted. Restricted data — which includes customer PII and robot telemetry logs — must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN.
+
+## Device Security
+Company laptops must have full-disk encryption enabled and the screen must auto-lock after 5 minutes of inactivity. Lost or stolen devices",False,,,0.5530585050582886,0,,,

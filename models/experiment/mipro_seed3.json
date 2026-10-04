@@ -1,0 +1,51 @@
+{
+  "generate.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": "# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g\n\nParental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.\n\n## Unpaid Leave\nEmployees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.\n\na rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.\n\n## Technology Standards\nBackend services are written in Go and Python. The standard database is PostgreSQL; new services must",
+        "question": "What happens to unused annual leave days beyond the carry-over limit?",
+        "reasoning": "The context explicitly states that any unused annual leave days beyond the carry-over limit of 5 are forfeited on December 31.",
+        "answer": "Days beyond the carry-over limit of 5 are forfeited on December 31."
+      },
+      {
+        "augmented": true,
+        "context": "# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g\n\n# Acme Robotics — Expense & Reimbursement Policy\n\n## Submission Deadlines\nAll expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.\n\n## Travel\nEconomy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv\n\nParental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.\n\n## Unpaid Leave\nEmployees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.",
+        "question": "An employee has worked at Acme for 6 complete months. About how many annual leave days have they accrued, and how many unused days can they carry into the next year?",
+        "reasoning": "To calculate the annual leave accrual, we need to multiply the number of months worked (6) by the monthly accrual rate (1.67 days). This gives us 6 x 1.67 = 10.02 days. Since the employee has completed 6 full months, we round down to 10 days.\n\nThe maximum carryover amount is 5 unused annual leave days. Therefore, the employee can carry over up to 5 days into the next year.",
+        "answer": "The employee has accrued approximately 10 days of annual leave and can carry over up to 5 unused days into the next year."
+      }
+    ],
+    "signature": {
+      "instructions": "Use context to determine if the employee can carry over unused annual leave days into the next year based on the provided company policy.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "relevant excerpts from company policy documents"
+        },
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "a concise answer grounded in the context"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

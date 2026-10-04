@@ -1,0 +1,48 @@
+{
+  "generate.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": "a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.\n\n## Technology Standards\nBackend services are written in Go and Python. The standard database is PostgreSQL; new services must\n\n# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns before any merge.\n\n## Deployment\nAcme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the \"daylight deploy\" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g",
+        "question": "Does an engineer earn leave for on-call work, and how many on-call weeks can they work in a four-week period?",
+        "reasoning": "The context mentions that on-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. It also states that no engineer may be on call for more than one week in any four-week period.",
+        "answer": "Yes, engineers earn leave for on-call work, specifically 1 extra day of leave for each completed week of on-call shifts. They can work a maximum of 1 on-call week in any 4-week period."
+      },
+      {
+        "question": "What percentage does Acme Robotics match on 401(k) retirement contributions?",
+        "answer": "The provided policy documents do not cover retirement or 401(k) matching, so the answer is not available."
+      }
+    ],
+    "signature": {
+      "instructions": "You will be asked to provide a leave policy overview for an employee who has been on call for three consecutive weeks. Provide a 2-paragraph summary of their accrued leave, including any potential carryover or forfeiture of days.\n\nAnswer: The engineer has completed 3 weeks of on-call shifts and can be compensated with an additional day for each week worked. However, the policy also states that no engineer may work more than one week in any four-week period, which means this engineer is currently within their allowed limit.\n\nHowever, the employee's accrued leave and potential carryover will depend on the exact details of their individual situation, so I recommend verifying the policy to determine the specifics.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "relevant excerpts from company policy documents"
+        },
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "a concise answer grounded in the context"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

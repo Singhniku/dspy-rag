@@ -2,6 +2,7 @@
 # NOTE: the langchain-* family MUST stay on the 0.3.x line. RAGAS 0.4.x imports
 # a module that langchain 1.x removed, so newer langchain breaks the import.
 dspy==3.2.1                 # programmatic prompt optimization
+optuna==5.0.0               # DSPy's optional dependency for MIPROv2's Bayesian search
 chromadb==1.5.9             # local vector store
 sentence-transformers==5.6.1  # local embedding model for retrieval
 ollama==0.6.2               # python client for local LLM inference

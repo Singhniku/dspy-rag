@@ -1,0 +1,51 @@
+{
+  "generate.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": "a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.\n\n## Technology Standards\nBackend services are written in Go and Python. The standard database is PostgreSQL; new services must\n\n# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns before any merge.\n\n## Deployment\nAcme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the \"daylight deploy\" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g",
+        "question": "Does an engineer earn leave for on-call work, and how many on-call weeks can they work in a four-week period?",
+        "reasoning": "The context provides information about on-call shifts, which are compensated with an additional day of leave per completed week. It also states that no engineer may be on call for more than one week in any four-week period.",
+        "answer": "Engineers earn leave for on-call work and can work a maximum of 1 on-call week in every 4-week period."
+      },
+      {
+        "augmented": true,
+        "context": "# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g\n\n# Acme Robotics — Expense & Reimbursement Policy\n\n## Submission Deadlines\nAll expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.\n\n## Travel\nEconomy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv\n\nParental leave must be taken within 12 months of the birth or adoption of a child. Employees must give at least 8 weeks written notice before commencing parental leave.\n\n## Unpaid Leave\nEmployees who have exhausted their paid leave may request unpaid leave of up to 30 days per year, subject to manager approval. Unpaid leave does not affect continuity of service but does pause annual leave accrual for the duration.",
+        "question": "An employee has worked at Acme for 6 complete months. About how many annual leave days have they accrued, and how many unused days can they carry into the next year?",
+        "reasoning": "To calculate the number of annual leave days accrued by the employee after 6 complete months, we need to multiply their monthly accrual rate (1.67 days) by the number of months they've worked. Since there are approximately 4 months in a quarter, 6 months is equivalent to 1.5 quarters.\n\nMonthly accrual: 1.67 days/month\nNumber of months worked: 6 months\n\nTotal accrued annual leave days = 1.67 days/month * 1.5 quarters ≈ 2.505 days\n\nSince the employee can carry over a maximum of 5 unused annual leave days into the following calendar year, and they've accrued approximately 2.505 days, they will be able to carry over all their accrued amount.",
+        "answer": "The employee has accrued approximately 2.505 days of paid annual leave. They can carry over up to 5 unused annual leave days into the next year."
+      }
+    ],
+    "signature": {
+      "instructions": "Answer the question using ONLY the provided context.\n\nIf the context does not contain the answer, reply that you don't know.\nDo not use outside knowledge and do not invent facts, numbers, or policies.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "relevant excerpts from company policy documents"
+        },
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "a concise answer grounded in the context"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

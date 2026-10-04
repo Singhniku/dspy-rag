@@ -16,12 +16,14 @@ from . import config
 from .retriever import ChromaRetriever
 
 
-def configure_lm() -> dspy.LM:
+def configure_lm(cache: bool = True) -> dspy.LM:
     """Point DSPy at our local Ollama server. No API keys, fully offline.
 
     'ollama_chat/<model>' tells litellm (which DSPy uses under the hood) to use
     Ollama's chat endpoint. temperature=0 makes answers deterministic, which is
     important so our evaluation numbers are stable and comparable run-to-run.
+    cache=False makes every call hit the model, so repeated runs are real
+    re-runs rather than answers replayed from DSPy's cache.
     """
     lm = dspy.LM(
         model=f"ollama_chat/{config.OLLAMA_MODEL}",
@@ -29,6 +31,7 @@ def configure_lm() -> dspy.LM:
         api_key="",            # Ollama needs none
         temperature=0.0,
         max_tokens=512,
+        cache=cache,
     )
     dspy.configure(lm=lm)
     return lm

@@ -1,50 +1,408 @@
 [
   {
+    "id": "q01",
+    "type": "single_hop",
+    "split": "test",
     "question": "How many days of paid annual leave do full-time employees get, and how many can be carried over?",
     "ground_truth": "Full-time employees accrue 20 days of paid annual leave per year, and may carry over a maximum of 5 unused days into the next year."
   },
   {
+    "id": "q02",
+    "type": "single_hop",
+    "split": "train",
     "question": "When does an employee need a medical certificate for sick leave?",
     "ground_truth": "A medical certificate is required for any sick absence longer than 3 consecutive working days, and must be submitted within 7 days of returning to work."
   },
   {
+    "id": "q03",
+    "type": "single_hop",
+    "split": "test",
     "question": "How much paid parental leave does the primary caregiver receive and how much notice is required?",
     "ground_truth": "The primary caregiver receives 16 weeks of fully paid parental leave, and must give at least 8 weeks written notice before starting it."
   },
   {
+    "id": "q04",
+    "type": "single_hop",
+    "split": "train",
     "question": "What is the deadline for submitting expense claims, and what happens to very old claims?",
     "ground_truth": "Expense claims must be submitted within 30 days. Claims after 30 days need director-level approval, and claims older than 90 days will not be reimbursed at all."
   },
   {
+    "id": "q05",
+    "type": "single_hop",
+    "split": "train",
     "question": "When is business class travel allowed?",
     "ground_truth": "Business class requires VP approval and is reserved for flights exceeding 9 hours."
   },
   {
+    "id": "q06",
+    "type": "single_hop",
+    "split": "test",
     "question": "What is the nightly hotel limit in high-cost cities and which cities count as high-cost?",
     "ground_truth": "The hotel limit is $350 per night in high-cost cities, which are New York, San Francisco, London, Tokyo, and Zurich."
   },
   {
+    "id": "q07",
+    "type": "single_hop",
+    "split": "test",
     "question": "What are the password requirements at Acme Robotics?",
     "ground_truth": "Passwords must be at least 14 characters with upper case, lower case, a number, and a symbol, and must be rotated every 90 days."
   },
   {
+    "id": "q08",
+    "type": "single_hop",
+    "split": "train",
     "question": "How must Restricted data be protected?",
     "ground_truth": "Restricted data must be encrypted at rest using AES-256 and may only be accessed from company-managed devices on the corporate VPN."
   },
   {
+    "id": "q09",
+    "type": "single_hop",
+    "split": "test",
     "question": "How quickly must a lost or stolen laptop be reported?",
     "ground_truth": "A lost or stolen device must be reported to the Security Operations Center within 1 hour of discovery."
   },
   {
+    "id": "q10",
+    "type": "single_hop",
+    "split": "test",
     "question": "How many approvals does a pull request need before merging?",
     "ground_truth": "A pull request needs at least two approvals, and at least one must come from a designated code owner of the affected module."
   },
   {
+    "id": "q11",
+    "type": "single_hop",
+    "split": "test",
     "question": "What is the 'daylight deploy' rule?",
     "ground_truth": "Production deployments must occur between 10:00 and 16:00 on business days so engineers are available to respond to issues; this is the daylight deploy rule."
   },
   {
+    "id": "q12",
+    "type": "single_hop",
+    "split": "test",
     "question": "How fast must an on-call engineer acknowledge a critical page, and how are on-call shifts compensated?",
     "ground_truth": "The on-call engineer must acknowledge a critical page within 10 minutes, and each completed on-call week is compensated with an additional day of leave."
+  },
+  {
+    "id": "q13",
+    "type": "single_hop",
+    "split": "test",
+    "question": "How many days of paid sick leave do employees get, and does unused sick leave carry over?",
+    "ground_truth": "Employees get 10 days of paid sick leave per year. Sick leave does not carry over; it resets on January 1."
+  },
+  {
+    "id": "q14",
+    "type": "single_hop",
+    "split": "test",
+    "question": "At what rate does annual leave accrue?",
+    "ground_truth": "Annual leave accrues at 1.67 days per completed month of service, which adds up to 20 days per year."
+  },
+  {
+    "id": "q15",
+    "type": "single_hop",
+    "split": "train",
+    "question": "What happens to unused annual leave days beyond the carry-over limit?",
+    "ground_truth": "Unused annual leave days beyond the 5-day carry-over limit are forfeited on December 31."
+  },
+  {
+    "id": "q16",
+    "type": "single_hop",
+    "split": "train",
+    "question": "How much parental leave does the secondary caregiver receive?",
+    "ground_truth": "The secondary caregiver receives 6 weeks of parental leave."
+  },
+  {
+    "id": "q17",
+    "type": "single_hop",
+    "split": "test",
+    "question": "Within what period must parental leave be taken?",
+    "ground_truth": "Parental leave must be taken within 12 months of the birth or adoption of a child."
+  },
+  {
+    "id": "q18",
+    "type": "single_hop",
+    "split": "train",
+    "question": "How much unpaid leave can an employee request, and who must approve it?",
+    "ground_truth": "Employees who have exhausted their paid leave may request up to 30 days of unpaid leave per year, subject to manager approval."
+  },
+  {
+    "id": "q19",
+    "type": "single_hop",
+    "split": "test",
+    "question": "Through which system must expense claims be submitted?",
+    "ground_truth": "Expense claims must be submitted through the Concord portal."
+  },
+  {
+    "id": "q20",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What flight class can employees book for flights longer than 6 hours?",
+    "ground_truth": "Flights longer than 6 hours may be booked in premium economy with prior manager approval. Economy is the standard for flights under 6 hours."
+  },
+  {
+    "id": "q21",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What is the daily meal allowance while traveling?",
+    "ground_truth": "The daily meal allowance while traveling is $75 in North America and €70 in Europe."
+  },
+  {
+    "id": "q22",
+    "type": "single_hop",
+    "split": "train",
+    "question": "What is the nightly hotel limit in standard cities?",
+    "ground_truth": "Hotel bookings must not exceed $250 per night in standard cities."
+  },
+  {
+    "id": "q23",
+    "type": "single_hop",
+    "split": "test",
+    "question": "How much can a new employee expense for a home-office setup, and what does it cover?",
+    "ground_truth": "Employees may expense up to $1,000 for a home-office setup in their first year, covering a desk, chair, and monitor."
+  },
+  {
+    "id": "q24",
+    "type": "single_hop",
+    "split": "train",
+    "question": "Which expenses are never reimbursable?",
+    "ground_truth": "Alcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable."
+  },
+  {
+    "id": "q25",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What are the rules for client entertainment that involves alcohol?",
+    "ground_truth": "Client entertainment involving alcohol requires pre-approval and must be itemized separately."
+  },
+  {
+    "id": "q26",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What are Acme Robotics' data classification tiers?",
+    "ground_truth": "Data is classified into four tiers: Public, Internal, Confidential, and Restricted."
+  },
+  {
+    "id": "q27",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What types of data are classified as Restricted?",
+    "ground_truth": "Restricted data includes customer PII and robot telemetry logs."
+  },
+  {
+    "id": "q28",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What security settings are required on company laptops?",
+    "ground_truth": "Company laptops must have full-disk encryption enabled, and the screen must auto-lock after 5 minutes of inactivity."
+  },
+  {
+    "id": "q29",
+    "type": "single_hop",
+    "split": "test",
+    "question": "Are personal USB storage devices allowed on engineering workstations?",
+    "ground_truth": "No. Personal USB storage devices are prohibited on all engineering workstations."
+  },
+  {
+    "id": "q30",
+    "type": "single_hop",
+    "split": "train",
+    "question": "Where is multi-factor authentication mandatory?",
+    "ground_truth": "Multi-factor authentication is mandatory for all systems that access customer data."
+  },
+  {
+    "id": "q31",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What should an employee do if they suspect a security incident?",
+    "ground_truth": "They must report it immediately to security@acmerobotics.example and must never try to investigate or remediate it themselves before reporting it."
+  },
+  {
+    "id": "q32",
+    "type": "single_hop",
+    "split": "test",
+    "question": "How large can a pull request be?",
+    "ground_truth": "Pull requests must be smaller than 400 lines of changed code; larger changes should be split into a stack of smaller PRs."
+  },
+  {
+    "id": "q33",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What deployment strategy does Acme Robotics use for production?",
+    "ground_truth": "Acme Robotics deploys to production using a blue-green strategy."
+  },
+  {
+    "id": "q34",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What must accompany every production deployment?",
+    "ground_truth": "Every production deployment must be accompanied by a rollback plan documented in the release ticket."
+  },
+  {
+    "id": "q35",
+    "type": "single_hop",
+    "split": "test",
+    "question": "How long is an on-call shift, and how often can an engineer be on call?",
+    "ground_truth": "On-call shifts run Monday to Monday as a weekly rotation, and no engineer may be on call for more than one week in any four-week period."
+  },
+  {
+    "id": "q36",
+    "type": "single_hop",
+    "split": "test",
+    "question": "What is the standard database, and what is required to introduce a different one?",
+    "ground_truth": "The standard database is PostgreSQL. A new database technology requires Architecture Review Board approval."
+  },
+  {
+    "id": "q37",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "If an employee loses their company laptop, whom must they notify and how quickly, and can they buy a replacement and expense it?",
+    "ground_truth": "They must report it to the Security Operations Center within 1 hour of discovery. They cannot expense a replacement: laptops are provided by the IT department and must not be expensed personally."
+  },
+  {
+    "id": "q38",
+    "type": "multi_hop",
+    "split": "train",
+    "question": "An employee is flying 10 hours to Tokyo. What cabin class may they book, with whose approval, and what is the nightly hotel cap there?",
+    "ground_truth": "They may book business class with VP approval, because the flight exceeds 9 hours. Tokyo is a high-cost city, so the hotel cap is $350 per night."
+  },
+  {
+    "id": "q39",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "Can an engineer deploy to production at 15:00 on a Friday?",
+    "ground_truth": "No. The daylight deploy rule allows production deployments between 10:00 and 16:00 on business days, but Friday afternoon deployments after 14:00 are frozen."
+  },
+  {
+    "id": "q40",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "An employee submits a $300-per-night London hotel bill 45 days after the stay. Is the rate within policy, and what approval does the late claim need?",
+    "ground_truth": "The rate is within policy, because London is a high-cost city with a $350 nightly limit. Because the claim is more than 30 days old, it needs director-level approval and may be rejected."
+  },
+  {
+    "id": "q41",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "What response-time commitments apply to critical issues for the on-call engineer and for the Security Operations Center?",
+    "ground_truth": "The on-call engineer must acknowledge a critical page within 10 minutes, and the Security Operations Center guarantees a first response within 15 minutes for critical incidents."
+  },
+  {
+    "id": "q42",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "Which Acme Robotics policies set a 90-day limit, and what do they say?",
+    "ground_truth": "The security policy requires passwords to be rotated every 90 days, and the expense policy says claims older than 90 days will not be reimbursed."
+  },
+  {
+    "id": "q43",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "How is robot telemetry data classified and protected, and in what language is the robot fleet firmware written?",
+    "ground_truth": "Robot telemetry logs are Restricted data, so they must be encrypted at rest with AES-256 and accessed only from company-managed devices on the corporate VPN. The robot fleet firmware is written in Rust."
+  },
+  {
+    "id": "q44",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "What authentication requirements apply to an engineer with production access?",
+    "ground_truth": "They need a password of at least 14 characters with upper case, lower case, a number, and a symbol, rotated every 90 days; MFA for systems that access customer data; and a hardware security key (YubiKey), which Acme uses for engineering staff with production access."
+  },
+  {
+    "id": "q45",
+    "type": "multi_hop",
+    "split": "train",
+    "question": "An employee has worked at Acme for 6 complete months. About how many annual leave days have they accrued, and how many unused days can they carry into the next year?",
+    "ground_truth": "About 10 days (1.67 days per completed month for 6 months). At most 5 unused annual leave days can be carried into the next calendar year."
+  },
+  {
+    "id": "q46",
+    "type": "multi_hop",
+    "split": "train",
+    "question": "Does an engineer earn leave for on-call work, and how many on-call weeks can they work in a four-week period?",
+    "ground_truth": "Yes. Each completed on-call week is compensated with an additional day of leave, and an engineer may be on call for at most one week in any four-week period."
+  },
+  {
+    "id": "q47",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "Which kinds of leave reset or are lost at the turn of the calendar year?",
+    "ground_truth": "Sick leave does not carry over and resets on January 1, and annual leave beyond 5 unused days is forfeited on December 31."
+  },
+  {
+    "id": "q48",
+    "type": "multi_hop",
+    "split": "test",
+    "question": "If a laptop holding customer PII is stolen, how fast must it be reported, and how must that data be protected?",
+    "ground_truth": "The theft must be reported to the Security Operations Center within 1 hour of discovery. Customer PII is Restricted data, which must be encrypted at rest using AES-256 and accessed only from company-managed devices on the corporate VPN."
+  },
+  {
+    "id": "q49",
+    "type": "unanswerable",
+    "split": "train",
+    "question": "What percentage does Acme Robotics match on 401(k) retirement contributions?",
+    "ground_truth": "The provided policy documents do not cover retirement or 401(k) matching, so the answer is not available."
+  },
+  {
+    "id": "q50",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "How many days of bereavement leave do employees get?",
+    "ground_truth": "The provided policy documents do not cover bereavement leave, so the answer is not available."
+  },
+  {
+    "id": "q51",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "What is the daily meal allowance when traveling in Asia?",
+    "ground_truth": "The policies do not give a meal allowance for Asia; they only specify $75 per day in North America and €70 in Europe."
+  },
+  {
+    "id": "q52",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "Who is the CEO of Acme Robotics?",
+    "ground_truth": "The provided policy documents do not cover who the CEO is, so the answer is not available."
+  },
+  {
+    "id": "q53",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "How many days per week may employees work remotely?",
+    "ground_truth": "The provided policy documents do not cover a remote-work policy, so the answer is not available."
+  },
+  {
+    "id": "q54",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "What is the mileage reimbursement rate for using a personal car on business?",
+    "ground_truth": "The provided policy documents do not cover a mileage reimbursement rate, so the answer is not available."
+  },
+  {
+    "id": "q55",
+    "type": "unanswerable",
+    "split": "train",
+    "question": "Which cloud provider hosts Acme Robotics' production services?",
+    "ground_truth": "The provided policy documents do not cover which cloud provider is used, so the answer is not available."
+  },
+  {
+    "id": "q56",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "How long are security logs retained?",
+    "ground_truth": "The provided policy documents do not cover a log retention period, so the answer is not available."
+  },
+  {
+    "id": "q57",
+    "type": "unanswerable",
+    "split": "train",
+    "question": "How long is the probation period for new employees?",
+    "ground_truth": "The provided policy documents do not cover a probation period, so the answer is not available."
+  },
+  {
+    "id": "q58",
+    "type": "unanswerable",
+    "split": "test",
+    "question": "Does Acme Robotics offer tuition reimbursement for further education?",
+    "ground_truth": "The provided policy documents do not cover tuition reimbursement, so the answer is not available."
   }
 ]

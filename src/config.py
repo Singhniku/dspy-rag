@@ -20,11 +20,12 @@ RESULTS_DIR = EVAL_DIR / "results"
 OLLAMA_MODEL = "llama3.2:3b"
 OLLAMA_BASE_URL = "http://localhost:11434"
 
-# Judge: a SEPARATE model used only by RAGAS to grade answers. Judging needs
-# disciplined, parseable output (JSON verdicts) more than broad knowledge, so
-# we use Qwen2.5-3B, which follows instructions far more reliably than the
-# generator. This generator-vs-judge split is standard practice in LLM eval.
-JUDGE_MODEL = "qwen2.5:3b"
+# Judge: a SEPARATE model used only to grade answers (RAGAS + abstention check).
+# Judging needs disciplined, parseable output (JSON verdicts) more than broad
+# knowledge. Qwen2.5 follows instructions far more reliably than the generator;
+# the 7B size (up from 3B) lowers judge noise and still fits a 16 GB Mac next to
+# the generator. This generator-vs-judge split is standard practice in LLM eval.
+JUDGE_MODEL = "qwen2.5:7b"
 
 # Retrieval: a small sentence-transformer embedding model. This runs locally
 # via sentence-transformers (downloaded once, then offline). Note it is a
@@ -37,3 +38,8 @@ CHUNK_SIZE = 500          # characters per chunk (roughly a paragraph)
 CHUNK_OVERLAP = 100       # characters shared between neighboring chunks
 TOP_K = 4                 # how many chunks to retrieve per question
 COLLECTION_NAME = "acme_handbook"
+
+# --- Experiment (src/experiment.py) -------------------------------------------
+SEEDS = [1, 2, 3, 4, 5]   # one run per seed for every configuration
+EXPERIMENT_DIR = RESULTS_DIR / "experiment"            # per-run CSVs + summary
+PROGRAMS_DIR = ROOT / "models" / "experiment"          # compiled program per seed

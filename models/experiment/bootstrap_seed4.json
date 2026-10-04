@@ -1,0 +1,51 @@
+{
+  "generate.predict": {
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "context": "nder 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approval. Business class requires VP approval and is reserved for flights exceeding 9 hours. The daily meal allowance while traveling is $75 in North America and €70 in Europe.\n\n## Accommodation\nHotel bookings must not exceed $250 per night in standard cities and $350 per night in high-cost cities (New York, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking pla\n\nrk, San Francisco, London, Tokyo, Zurich). Employees are encouraged to use the preferred booking platform TravelHub to receive corporate rates.\n\n## Equipment\nEmployees may expense a home-office setup of up to $1,000 in their first year, covering a desk, chair, and monitor. Laptops and phones are provided by the IT department and must not be expensed personally.\n\n## Non-Reimbursable Items\nAlcohol, personal entertainment, traffic fines, and hotel minibar charges are never reimbursable. Client ente\n\n# Acme Robotics — Expense & Reimbursement Policy\n\n## Submission Deadlines\nAll expense claims must be submitted through the Concord portal within 30 days of the expense being incurred. Claims submitted after 30 days require director-level approval and may be rejected. Claims older than 90 days will not be reimbursed under any circumstances.\n\n## Travel\nEconomy class is the standard for all flights under 6 hours. Flights longer than 6 hours may be booked in premium economy with prior manager approv\n\n# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic",
+        "question": "An employee is flying 10 hours to Tokyo. What cabin class may they book, with whose approval, and what is the nightly hotel cap there?",
+        "reasoning": "The employee is flying 10 hours to Tokyo, which exceeds the standard 6-hour limit. According to the context, flights longer than 6 hours may be booked in premium economy with prior manager approval.",
+        "answer": "Premium economy, with prior manager approval. The nightly hotel cap in high-cost cities like Tokyo is $350 per night."
+      },
+      {
+        "augmented": true,
+        "context": "a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-call rotation. The on-call engineer must acknowledge any critical page within 10 minutes. On-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. No engineer may be on call for more than one week in any four-week period.\n\n## Technology Standards\nBackend services are written in Go and Python. The standard database is PostgreSQL; new services must\n\n# Acme Robotics — Leave & Time-Off Policy\n\n## Annual Leave\nFull-time employees at Acme Robotics accrue 20 days of paid annual leave per year, accruing at a rate of 1.67 days per completed month of service. Employees may carry over a maximum of 5 unused annual leave days into the following calendar year. Any days beyond 5 are forfeited on December 31.\n\n## Sick Leave\nEmployees are entitled to 10 days of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sic\n\ns before any merge.\n\n## Deployment\nAcme Robotics deploys to production using a blue-green strategy. All deployments to production must occur between 10:00 and 16:00 on business days — a policy known internally as the \"daylight deploy\" rule — so that engineers are available to respond to issues. Friday afternoon deployments after 14:00 are frozen. Every production deployment must be accompanied by a rollback plan documented in the release ticket.\n\n## On-Call\nEngineering teams operate a weekly on-\n\ns of paid sick leave per year. Sick leave does not carry over and is reset on January 1. For any sick absence longer than 3 consecutive working days, a medical certificate must be submitted to the People Operations team within 7 days of returning to work.\n\n## Parental Leave\nAcme Robotics offers 16 weeks of fully paid parental leave for the primary caregiver and 6 weeks for the secondary caregiver. Parental leave must be taken within 12 months of the birth or adoption of a child. Employees must g",
+        "question": "Does an engineer earn leave for on-call work, and how many on-call weeks can they work in a four-week period?",
+        "reasoning": "The context mentions that on-call shifts run Monday to Monday and are compensated with an additional day of leave per completed week. It also states that no engineer may be on call for more than one week in any four-week period.",
+        "answer": "On-call engineers earn leave for their work, and they can work a maximum of 1 on-call week in every 4-week period."
+      }
+    ],
+    "signature": {
+      "instructions": "Answer the question using ONLY the provided context.\n\nIf the context does not contain the answer, reply that you don't know.\nDo not use outside knowledge and do not invent facts, numbers, or policies.",
+      "fields": [
+        {
+          "prefix": "Context:",
+          "description": "relevant excerpts from company policy documents"
+        },
+        {
+          "prefix": "Question:",
+          "description": "${question}"
+        },
+        {
+          "prefix": "Reasoning:",
+          "description": "${reasoning}"
+        },
+        {
+          "prefix": "Answer:",
+          "description": "a concise answer grounded in the context"
+        }
+      ]
+    },
+    "lm": null
+  },
+  "metadata": {
+    "dependency_versions": {
+      "python": "3.13",
+      "dspy": "3.2.1",
+      "cloudpickle": "3.1"
+    }
+  }
+}

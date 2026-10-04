@@ -1,0 +1,15 @@
+{"config": "baseline", "seed": 1, "compile_s": 0, "answer_s": 236, "judge_s": 3229, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "bootstrap", "seed": 1, "compile_s": 43, "answer_s": 364, "judge_s": 1498, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "baseline", "seed": 2, "compile_s": 0, "answer_s": 267, "judge_s": 1182, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "bootstrap", "seed": 2, "compile_s": 32, "answer_s": 393, "judge_s": 1384, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "baseline", "seed": 3, "compile_s": 0, "answer_s": 260, "judge_s": 1179, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "bootstrap", "seed": 3, "compile_s": 26, "answer_s": 373, "judge_s": 1243, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "baseline", "seed": 4, "compile_s": 0, "answer_s": 229, "judge_s": 1014, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "bootstrap", "seed": 4, "compile_s": 28, "answer_s": 254, "judge_s": 1482, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "baseline", "seed": 5, "compile_s": 0, "answer_s": 269, "judge_s": 1157, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "bootstrap", "seed": 5, "compile_s": 19, "answer_s": 259, "judge_s": 2045, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "mipro", "seed": 1, "compile_s": 2705, "answer_s": 401, "judge_s": 1261, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "mipro", "seed": 2, "compile_s": 1666, "answer_s": 293, "judge_s": 1352, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "mipro", "seed": 3, "compile_s": 1488, "answer_s": 418, "judge_s": 2072, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "mipro", "seed": 4, "compile_s": 1441, "answer_s": 267, "judge_s": 1293, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
+{"config": "mipro", "seed": 5, "compile_s": 1354, "answer_s": 327, "judge_s": 1142, "generator": "llama3.2:3b", "judge": "qwen2.5:7b"}
