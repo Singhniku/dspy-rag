@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Nikita Singh">
+<title>Nikita Singh · dspy-rag evaluation</title>
+<style>
+@page { size: 8.5in 11in; margin: 0; }
+:root {
+  color-scheme: light;
+  --ink:#0b0b0b; --ink2:#52514e; --muted:#898781; --grid:#e1e0d9; --wash:#f3f2ee;
+  --paper:#ffffff; --plane:#e9e8e3; --bfs:#2a78d6; --mip:#eb6834; --base:#898781; --bad:#d03b3b;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--plane); color: var(--ink);
+  font: 9.4pt/1.42 system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--grid); }
+.page {
+  width: 8.5in; height: 11in; margin: 28px auto; background: var(--paper);
+  padding: .42in .6in .36in; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: .11in;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 10px 30px rgba(0,0,0,.08);
+}
+h1 { font-size: 18.5pt; line-height: 1.12; margin: 3px 0 3px; letter-spacing: -.012em; font-weight: 700; }
+h2 { font-size: 10.6pt; margin: 0 0 5px; font-weight: 700; letter-spacing: -.003em; }
+h3 { font-size: 9.6pt; margin: 0 0 6px; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-size: 8.2pt; color: var(--ink2); font-weight: 600; letter-spacing: .01em; }
+.sub { font-size: 10.6pt; color: var(--ink2); line-height: 1.35; }
+.meta { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+.meta span { font-size: 8.4pt; color: var(--ink2); background: var(--wash); border-radius: 999px; padding: 3px 8px; }
+.meta span b { color: var(--ink); }
+.meta span.live { background: var(--ink); color: #fff; font-weight: 600; }
+.meta span.live a { border-bottom: 0; }
+.goal { font-size: 10.4pt; line-height: 1.42; border-left: 3px solid var(--ink); padding: 1px 0 1px 12px; }
+.goal b { font-weight: 650; }
+.scope { display: grid; grid-template-columns: 1fr 1fr; gap: .2in; }
+.scope > div { background: var(--wash); border-radius: 10px; padding: 8px 12px 9px; }
+.scope ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.scope li { display: grid; grid-template-columns: 16px 1fr; gap: 8px; align-items: start; font-size: 8.7pt; line-height: 1.32; }
+.scope li b { font-weight: 650; }
+.ico { width: 15px; height: 15px; margin-top: 1px; }
+.cap { color: var(--ink2); font-size: 8.8pt; margin: -2px 0 6px; }
+svg.fig { display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; }
+svg text { font-family: inherit; }
+.bt { font-size: 10.4px; font-weight: 650; fill: var(--ink); }
+.bs { font-size: 8.7px; fill: var(--ink2); }
+.chip { font-size: 8.3px; font-weight: 600; fill: #fff; }
+.band { font-size: 8px; font-weight: 700; letter-spacing: .07em; fill: var(--muted); }
+.bandnote { font-size: 8px; font-weight: 500; letter-spacing: 0; fill: var(--muted); }
+.note { font-size: 8.3px; fill: var(--ink2); font-style: italic; }
+.grp { font-size: 9.6px; font-weight: 650; fill: var(--ink); }
+.lab { font-size: 9px; fill: var(--ink2); }
+.lab2 { font-size: 8.4px; fill: var(--muted); }
+.val { font-size: 9px; fill: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
+.tick { font-size: 8.4px; fill: var(--muted); font-variant-numeric: tabular-nums; }
+.tile { font-size: 7.3px; font-weight: 700; fill: #fff; }
+.exp { display: grid; grid-template-columns: 1.12fr .95fr 1.13fr; gap: .24in; align-items: start; }
+.exp h3 { font-size: 9.2pt; }
+.exp ul { margin: 0; padding-left: 14px; display: grid; gap: 3px; font-size: 8.6pt; line-height: 1.3; }
+.exp .small { font-size: 8.3pt; color: var(--ink2); margin-top: 4px; }
+footer { margin-top: auto; display: flex; justify-content: space-between; gap: 12px; font-size: 7.8pt; color: var(--muted); border-top: 1px solid var(--grid); padding-top: 6px; }
+/* page 2 */
+.top { display: flex; justify-content: space-between; align-items: end; gap: 12px; }
+.top h1 { font-size: 17pt; margin: 0; }
+.legend { display: flex; gap: 12px; font-size: 8.4pt; color: var(--ink2); }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.row { display: grid; grid-template-columns: 1.45fr 1fr; gap: .25in; }
+.find h2 { display: flex; gap: 7px; align-items: baseline; }
+.find h2 .n { flex: none; width: 17px; height: 17px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 8.4pt; display: inline-grid; place-items: center; transform: translateY(-1px); }
+.find .cap { margin: 4px 0 0; }
+.quote { background: var(--wash); border-radius: 8px; padding: 6px 10px; font-size: 8.5pt; margin: 6px 0 5px; line-height: 1.34; }
+.quote .q { color: var(--ink2); }
+.quote .score { display: inline-block; margin-top: 3px; font-weight: 700; color: #fff; background: var(--bad); border-radius: 4px; padding: 0 5px; font-size: 8pt; }
+.mini { font-size: 8.6pt; font-weight: 650; margin: 2px 0 3px; }
+.checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: .2in; background: var(--wash); border-radius: 10px; padding: 8px 12px 6px; }
+.stat .big { font-size: 17pt; font-weight: 700; line-height: 1; letter-spacing: -.01em; }
+.stat p { font-size: 8.4pt; color: var(--ink2); margin: 3px 0 5px; line-height: 1.3; min-height: 2.6em; }
+.ln { display: grid; grid-template-columns: 1fr 1fr; gap: .25in; }
+.ln ol { margin: 0; padding: 0; list-style: none; counter-reset: k; display: grid; gap: 4px; }
+.ln li { counter-increment: k; display: grid; grid-template-columns: 18px 1fr; gap: 6px; font-size: 8.6pt; line-height: 1.32; }
+.ln li::before { content: counter(k); width: 16px; height: 16px; border-radius: 50%; border: 1.3px solid var(--ink); font-size: 7.8pt; font-weight: 700; display: grid; place-items: center; margin-top: 1px; }
+.ln li b { font-weight: 650; }
+/* toolbar (screen only) */
+.toolbar { position: fixed; right: 16px; bottom: 16px; display: flex; gap: 8px; z-index: 9; }
+.toolbar button { font: 600 12px system-ui, sans-serif; border: 1px solid rgba(11,11,11,.15); background: #fff; color: var(--ink); border-radius: 999px; padding: 7px 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+.toolbar button:hover { background: var(--wash); }
+/* ---------- motion: base styles are the final state; animation only on screen ---------- */
+.particles { display: none; }
+.anim .in .particles { display: inline; }
+.anim .reveal { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+.anim .reveal:not(.in) { opacity: 0; transform: translateY(16px); }
+.anim .pop { transform-box: fill-box; transform-origin: center;
+  transition: transform .5s cubic-bezier(.3,1.5,.5,1), opacity .35s ease;
+  transition-delay: calc(var(--d, 0s) + var(--dd, 0s)); }
+.anim .reveal:not(.in) .pop { transform: scale(0); opacity: 0; }
+.anim .grow { transform-box: fill-box; transform-origin: left center;
+  transition: transform .95s cubic-bezier(.2,.75,.2,1); transition-delay: calc(var(--d, 0s) + var(--dd, 0s)); }
+.anim .reveal:not(.in) .grow { transform: scaleX(0); }
+.anim .grow-o { transform-box: view-box;
+  transition: transform .9s cubic-bezier(.2,.75,.2,1); transition-delay: calc(var(--d, 0s) + var(--dd, 0s)); }
+.anim .reveal:not(.in) .grow-o { transform: scaleX(0); }
+.anim .draw { stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: stroke-dashoffset .7s ease; transition-delay: calc(var(--d, 0s) + var(--dd, 0s)); }
+.anim .reveal:not(.in) .draw { stroke-dashoffset: 1; }
+@media print {
+  body { background: #fff; zoom: 1 !important; }
+  .page { margin: 0; box-shadow: none; break-after: page; }
+  .page:last-of-type { break-after: auto; }
+  .toolbar, .particles { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) { .particles { display: none !important; } }
+</style>
+</head>
+<body>
+<div class="toolbar"><button id="replay" type="button">Replay animation</button><button id="print" type="button">Save as PDF</button></div>
+
+<section class="page" aria-label="Page 1">
+  <header class="reveal">
+    <div class="eyebrow">Project brief · personal project, 2026</div>
+    <h1>Does prompt optimization make a RAG system more correct?</h1>
+    <p class="sub">An evaluation of DSPy on a small retrieval-augmented generation (RAG) pipeline that runs fully offline</p>
+    <div class="meta"><span><b>Nikita Singh</b></span><span>Code: <a href="https://github.com/Singhniku/dspy-rag">github.com/Singhniku/dspy-rag</a></span></div>
+  </header>
+
+  <p class="goal reveal" style="--d:.15s">I built this to learn <b>how language models answer questions and how those answers should be measured</b>. DSPy tunes a pipeline's prompts automatically, so I tested whether the tuning made the answers <b>more correct</b>, or only better on the score it was tuned for.</p>
+
+  <div class="scope reveal" style="--d:.25s">
+    <div>
+      <h3>What this project is</h3>
+      <ul>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.2" fill="#0b0b0b"/><path d="M4.6 8.3 L7 10.6 L11.4 5.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A question-answering pipeline over a fictional company's policies, running <b>fully offline on my laptop</b></span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.2" fill="#0b0b0b"/><path d="M4.6 8.3 L7 10.6 L11.4 5.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A <b>controlled experiment</b>: held-out questions, five seeds per setup, paired-bootstrap confidence intervals</span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.2" fill="#0b0b0b"/><path d="M4.6 8.3 L7 10.6 L11.4 5.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A <b>behavioral test suite</b>, modeled on CheckList, that looks for how the system fails</span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.2" fill="#0b0b0b"/><path d="M4.6 8.3 L7 10.6 L11.4 5.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Public and checkable</b>: code, data, every answer and every grade</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>What it is not</h3>
+      <ul>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="#52514e" stroke-width="1.4"/><path d="M5.6 5.6 L10.4 10.4 M10.4 5.6 L5.6 10.4" stroke="#52514e" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>Not connected to my job</b>: built outside work on my own laptop, with made-up documents and questions</span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="#52514e" stroke-width="1.4"/><path d="M5.6 5.6 L10.4 10.4 M10.4 5.6 L5.6 10.4" stroke="#52514e" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>Not model training</b>: the weights never change; DSPy only rewrites the prompt and picks examples</span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="#52514e" stroke-width="1.4"/><path d="M5.6 5.6 L10.4 10.4 M10.4 5.6 L5.6 10.4" stroke="#52514e" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>Not a benchmark claim</b>: the test set is small, so the 95% intervals on correctness span about ±0.09</span></li>
+        <li><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.6" fill="none" stroke="#52514e" stroke-width="1.4"/><path d="M5.6 5.6 L10.4 10.4 M10.4 5.6 L5.6 10.4" stroke="#52514e" stroke-width="1.6" stroke-linecap="round"/></svg><span><b>Not hand-graded</b>: the correctness review was done with Claude; every grade is published beside the 7B judge's</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="reveal" style="--d:.1s">
+    <h2>How it works</h2>
+    <p class="cap">Every setup answers with the same pipeline. The optimizers change only the prompt inside the DSPy module.</p>
+    <svg class="fig" viewBox="0 0 700 292" role="img" aria-labelledby="arch-t arch-d"><title id="arch-t">Pipeline architecture</title><desc id="arch-d">Policy documents are embedded into a ChromaDB index. A question is embedded, the top 4 chunks are retrieved, and a DSPy RAG module running Llama 3.2 3B answers with sources. A prompt optimizer, BootstrapFewShot or MIPROv2, compiles the module's prompt from 16 training questions. Answers to 42 held-out questions and 110 CheckList tests are scored by a Qwen 2.5 7B judge and RAGAS, checked by a correctness review, and summarized over 5 seeds with paired bootstrap confidence intervals.</desc><rect x="0" y="0" width="342" height="84" rx="10" fill="#f3f2ee"/><text x="12" y="15" class="band">BUILD THE INDEX<tspan class="bandnote" dx="6">once</tspan></text><rect x="358" y="0" width="342" height="84" rx="10" fill="#f3f2ee"/><text x="370" y="15" class="band">OPTIMIZE THE PROMPT<tspan class="bandnote" dx="6">training split only</tspan></text><rect x="0" y="94" width="700" height="96" rx="10" fill="#f3f2ee"/><text x="12" y="109" class="band">ANSWER A QUESTION</text><rect x="0" y="200" width="700" height="92" rx="10" fill="#f3f2ee"/><text x="12" y="215" class="band">SCORE THE ANSWERS<tspan class="bandnote" dx="6">42 test questions × 3 setups × 5 seeds</tspan></text><g class="arrows"><path class="draw" pathLength="1" d="M142,49 L175,49" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.35s"/><polygon class="pop" points="182,49 175,45.4 175,52.6" fill="#898781" style="--dd:0.80s"/><path class="draw" pathLength="1" d="M257,74 L257,109" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.55s"/><polygon class="pop" points="257,116 260.6,109 253.4,109" fill="#898781" style="--dd:1.00s"/><path class="draw" pathLength="1" d="M572,49 L549,49" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.35s"/><polygon class="pop" points="542,49 549,52.6 549,45.4" fill="#898781" style="--dd:0.80s"/><path class="draw" pathLength="1" d="M457,74 L457,103" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.60s"/><polygon class="pop" points="457,110 460.6,103 453.4,103" fill="#898781" style="--dd:1.05s"/><path class="draw" pathLength="1" d="M67,224 L67,181" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.80s"/><polygon class="pop" points="67,174 63.4,181 70.6,181" fill="#898781" style="--dd:1.25s"/><path class="draw" pathLength="1" d="M122,145 L145,145" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:0.90s"/><polygon class="pop" points="152,145 145,141.4 145,148.6" fill="#898781" style="--dd:1.35s"/><path class="draw" pathLength="1" d="M292,145 L325,145" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:1.00s"/><polygon class="pop" points="332,145 325,141.4 325,148.6" fill="#898781" style="--dd:1.45s"/><path class="draw" pathLength="1" d="M552,145 L575,145" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:1.10s"/><polygon class="pop" points="582,145 575,141.4 575,148.6" fill="#898781" style="--dd:1.55s"/><path class="draw" pathLength="1" d="M635,174 L635,217" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:1.25s"/><polygon class="pop" points="635,224 638.6,217 631.4,217" fill="#898781" style="--dd:1.70s"/><path class="draw" pathLength="1" d="M552,254 L529,254" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:1.40s"/><polygon class="pop" points="522,254 529,257.6 529,250.4" fill="#898781" style="--dd:1.85s"/><path class="draw" pathLength="1" d="M352,254 L329,254" fill="none" stroke="#898781" stroke-width="1.3" stroke-linejoin="round" style="--dd:1.50s"/><polygon class="pop" points="322,254 329,257.6 329,250.4" fill="#898781" style="--dd:1.95s"/></g><text x="465" y="96" class="note">compiled prompt</text><g class="particles" aria-hidden="true"><circle r="3.2" fill="#52514e"><animateMotion dur="7s" begin="0s" repeatCount="indefinite" path="M67,254 L67,145 L635,145 L635,254 L247,254" rotate="0"/></circle><circle r="3.2" fill="#52514e"><animateMotion dur="7s" begin="-2.3s" repeatCount="indefinite" path="M67,254 L67,145 L635,145 L635,254 L247,254" rotate="0"/></circle><circle r="3.2" fill="#52514e"><animateMotion dur="7s" begin="-4.6s" repeatCount="indefinite" path="M67,254 L67,145 L635,145 L635,254 L247,254" rotate="0"/></circle><circle r="3.2" fill="#898781"><animateMotion dur="3.2s" begin="-0.4s" repeatCount="indefinite" path="M77,49 L257,49 L257,145" rotate="0"/></circle><circle r="3.2" fill="#2a78d6"><animateMotion dur="3.2s" begin="0s" repeatCount="indefinite" path="M630,49 L457,49 L457,145" rotate="0"/></circle><circle r="3.2" fill="#eb6834"><animateMotion dur="3.2s" begin="-1.6s" repeatCount="indefinite" path="M630,49 L457,49 L457,145" rotate="0"/></circle></g><g class="pop" style="--dd:0.10s"><rect x="12" y="24" width="130" height="50" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="77" y="46.8" text-anchor="middle" class="bt">4 policy documents</text><text x="77" y="58.2" text-anchor="middle" class="bs">fictional company, Markdown</text></g><g class="pop" style="--dd:0.20s"><rect x="182" y="24" width="150" height="50" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="257" y="46.8" text-anchor="middle" class="bt">ChromaDB index</text><text x="257" y="58.2" text-anchor="middle" class="bs">all-MiniLM-L6-v2 embeddings</text></g><g class="pop" style="--dd:0.20s"><rect x="372" y="24" width="170" height="50" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="457" y="45.2" text-anchor="middle" class="bt">Prompt optimizer</text><rect x="386.7" y="51.2" width="89.6" height="14" rx="7" fill="#2a78d6"/><text x="431.5" y="61.2" text-anchor="middle" class="chip">BootstrapFewShot</text><rect x="481.3" y="51.2" width="45.9" height="14" rx="7" fill="#eb6834"/><text x="504.3" y="61.2" text-anchor="middle" class="chip">MIPROv2</text></g><g class="pop" style="--dd:0.10s"><rect x="572" y="24" width="116" height="50" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="630" y="46.8" text-anchor="middle" class="bt">Training split</text><text x="630" y="58.2" text-anchor="middle" class="bs">16 questions</text></g><g class="pop" style="--dd:0.50s"><rect x="12" y="116" width="110" height="58" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="67" y="137" text-anchor="middle" class="bt">Question</text><text x="67" y="148.5" text-anchor="middle" class="bs">test set or</text><text x="67" y="160" text-anchor="middle" class="bs">CheckList test</text></g><g class="pop" style="--dd:0.60s"><rect x="152" y="116" width="140" height="58" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="222" y="137" text-anchor="middle" class="bt">Top-4 search</text><text x="222" y="148.5" text-anchor="middle" class="bs">semantic, over</text><text x="222" y="160" text-anchor="middle" class="bs">the ChromaDB index</text></g><g class="pop" style="--dd:0.70s"><rect x="332" y="110" width="220" height="70" rx="8" fill="#fff" stroke="#0b0b0b" stroke-width="1.6"/><text x="442" y="137" text-anchor="middle" class="bt">DSPy RAG module</text><text x="442" y="148.5" text-anchor="middle" class="bs">Signature: context, question → answer</text><text x="442" y="160" text-anchor="middle" class="bs">Llama 3.2 3B on Ollama, temperature 0</text></g><g class="pop" style="--dd:0.85s"><rect x="582" y="116" width="106" height="58" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="635" y="137" text-anchor="middle" class="bt">Answer</text><text x="635" y="148.5" text-anchor="middle" class="bs">with its retrieved</text><text x="635" y="160" text-anchor="middle" class="bs">sources</text></g><g class="pop" style="--dd:0.40s"><rect x="12" y="224" width="130" height="60" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="77" y="246" text-anchor="middle" class="bt">Test inputs</text><text x="77" y="257.5" text-anchor="middle" class="bs">42 held-out questions</text><text x="77" y="269" text-anchor="middle" class="bs">110 CheckList tests</text></g><g class="pop" style="--dd:1.55s"><rect x="172" y="224" width="150" height="60" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="247" y="246" text-anchor="middle" class="bt">Statistics</text><text x="247" y="257.5" text-anchor="middle" class="bs">mean ± std over 5 seeds</text><text x="247" y="269" text-anchor="middle" class="bs">paired bootstrap 95% CIs</text></g><g class="pop" style="--dd:1.45s"><rect x="352" y="224" width="170" height="60" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="437" y="240.2" text-anchor="middle" class="bt">Correctness review</text><text x="437" y="251.8" text-anchor="middle" class="bs">1 / 0.5 / 0 per answer</text><text x="437" y="263.2" text-anchor="middle" class="bs">checks the 7B judge</text><text x="437" y="274.8" text-anchor="middle" class="bs">done with Claude</text></g><g class="pop" style="--dd:1.30s"><rect x="552" y="224" width="136" height="60" rx="8" fill="#fff" stroke="rgba(11,11,11,.20)" stroke-width="1"/><text x="620" y="246" text-anchor="middle" class="bt">Judge + RAGAS</text><text x="620" y="257.5" text-anchor="middle" class="bs">Qwen 2.5 7B</text><text x="620" y="269" text-anchor="middle" class="bs">faithfulness, relevancy</text></g></svg>
+  </section>
+
+  <section class="reveal">
+    <h2>The experiment</h2>
+    <div class="exp">
+      <div><h3>58 gold questions, split once by type</h3><svg class="fig" viewBox="0 0 250 140" role="img" aria-label="58 gold questions: 16 for training (10 single-hop, 3 multi-hop, 3 unanswerable) and 42 held out for testing (26 single-hop, 9 multi-hop, 7 unanswerable)"><circle class="pop" style="--dd:0.150s" cx="13" cy="15" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.168s" cx="27" cy="15" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.186s" cx="41" cy="15" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.204s" cx="55" cy="15" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.222s" cx="13" cy="29" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.240s" cx="27" cy="29" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.258s" cx="41" cy="29" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.276s" cx="55" cy="29" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.294s" cx="13" cy="43" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.312s" cx="27" cy="43" r="4.4" fill="#898781"/><circle class="pop" style="--dd:0.330s" cx="41" cy="43" r="3.5" fill="none" stroke="#898781" stroke-width="1.8"/><circle class="pop" style="--dd:0.348s" cx="55" cy="43" r="3.5" fill="none" stroke="#898781" stroke-width="1.8"/><circle class="pop" style="--dd:0.366s" cx="13" cy="57" r="3.5" fill="none" stroke="#898781" stroke-width="1.8"/><path class="pop" style="--dd:0.384s" d="M23.8,53.8 L30.2,60.2 M30.2,53.8 L23.8,60.2" stroke="#898781" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:0.402s" d="M37.8,53.8 L44.2,60.2 M44.2,53.8 L37.8,60.2" stroke="#898781" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:0.420s" d="M51.8,53.8 L58.2,60.2 M58.2,53.8 L51.8,60.2" stroke="#898781" stroke-width="1.8" stroke-linecap="round"/><circle class="pop" style="--dd:0.438s" cx="95" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.456s" cx="109" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.474s" cx="123" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.492s" cx="137" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.510s" cx="151" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.528s" cx="165" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.546s" cx="179" cy="15" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.564s" cx="95" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.582s" cx="109" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.600s" cx="123" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.618s" cx="137" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.636s" cx="151" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.654s" cx="165" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.672s" cx="179" cy="29" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.690s" cx="95" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.708s" cx="109" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.726s" cx="123" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.744s" cx="137" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.762s" cx="151" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.780s" cx="165" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.798s" cx="179" cy="43" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.816s" cx="95" cy="57" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.834s" cx="109" cy="57" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.852s" cx="123" cy="57" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.870s" cx="137" cy="57" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.888s" cx="151" cy="57" r="4.4" fill="#0b0b0b"/><circle class="pop" style="--dd:0.906s" cx="165" cy="57" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:0.924s" cx="179" cy="57" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:0.942s" cx="95" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:0.960s" cx="109" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:0.978s" cx="123" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:0.996s" cx="137" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:1.014s" cx="151" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:1.032s" cx="165" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><circle class="pop" style="--dd:1.050s" cx="179" cy="71" r="3.5" fill="none" stroke="#0b0b0b" stroke-width="1.8"/><path class="pop" style="--dd:1.068s" d="M91.8,81.8 L98.2,88.2 M98.2,81.8 L91.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.086s" d="M105.8,81.8 L112.2,88.2 M112.2,81.8 L105.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.104s" d="M119.8,81.8 L126.2,88.2 M126.2,81.8 L119.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.122s" d="M133.8,81.8 L140.2,88.2 M140.2,81.8 L133.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.140s" d="M147.8,81.8 L154.2,88.2 M154.2,81.8 L147.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.158s" d="M161.8,81.8 L168.2,88.2 M168.2,81.8 L161.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><path class="pop" style="--dd:1.176s" d="M175.8,81.8 L182.2,88.2 M182.2,81.8 L175.8,88.2" stroke="#0b0b0b" stroke-width="1.8" stroke-linecap="round"/><line x1="75" y1="6" x2="75" y2="94" stroke="#e1e0d9"/><text x="6" y="106" class="lab">16 train</text><text x="6" y="117" class="lab2">optimizer only</text><text x="88" y="106" class="lab">42 test</text><text x="88" y="117" class="lab2">every reported number</text><circle cx="10" cy="130" r="4.4" fill="#52514e"/><text x="18" y="133" class="lab2">single-hop 36</text><circle cx="86" cy="130" r="3.5" fill="none" stroke="#52514e" stroke-width="1.8"/><text x="94" y="133" class="lab2">multi-hop 12</text><path d="M154.8,126.8 L161.2,133.2 M161.2,126.8 L154.8,133.2" stroke="#52514e" stroke-width="1.8" stroke-linecap="round"/><text x="166" y="133" class="lab2">unanswerable 10</text></svg></div>
+      <div><h3>3 setups × 5 seeds = 15 runs</h3><svg class="fig" viewBox="0 0 200 92" role="img" aria-label="Three setups, baseline, BootstrapFewShot and MIPROv2, each run with seeds 1 to 5: 15 runs"><text x="100" y="9" text-anchor="middle" class="lab2">1</text><text x="121" y="9" text-anchor="middle" class="lab2">2</text><text x="142" y="9" text-anchor="middle" class="lab2">3</text><text x="163" y="9" text-anchor="middle" class="lab2">4</text><text x="184" y="9" text-anchor="middle" class="lab2">5</text><text x="86" y="9" text-anchor="end" class="lab2">seed</text><text x="86" y="27.5" text-anchor="end" class="lab">Baseline</text><rect class="pop" style="--dd:0.20s" x="92" y="16" width="16" height="16" rx="4" fill="#898781"><title>Baseline, seed 1</title></rect><rect class="pop" style="--dd:0.27s" x="113" y="16" width="16" height="16" rx="4" fill="#898781"><title>Baseline, seed 2</title></rect><rect class="pop" style="--dd:0.34s" x="134" y="16" width="16" height="16" rx="4" fill="#898781"><title>Baseline, seed 3</title></rect><rect class="pop" style="--dd:0.41s" x="155" y="16" width="16" height="16" rx="4" fill="#898781"><title>Baseline, seed 4</title></rect><rect class="pop" style="--dd:0.48s" x="176" y="16" width="16" height="16" rx="4" fill="#898781"><title>Baseline, seed 5</title></rect><text x="86" y="49.5" text-anchor="end" class="lab">BootstrapFewShot</text><rect class="pop" style="--dd:0.55s" x="92" y="38" width="16" height="16" rx="4" fill="#2a78d6"><title>BootstrapFewShot, seed 1</title></rect><rect class="pop" style="--dd:0.62s" x="113" y="38" width="16" height="16" rx="4" fill="#2a78d6"><title>BootstrapFewShot, seed 2</title></rect><rect class="pop" style="--dd:0.69s" x="134" y="38" width="16" height="16" rx="4" fill="#2a78d6"><title>BootstrapFewShot, seed 3</title></rect><rect class="pop" style="--dd:0.76s" x="155" y="38" width="16" height="16" rx="4" fill="#2a78d6"><title>BootstrapFewShot, seed 4</title></rect><rect class="pop" style="--dd:0.83s" x="176" y="38" width="16" height="16" rx="4" fill="#2a78d6"><title>BootstrapFewShot, seed 5</title></rect><text x="86" y="71.5" text-anchor="end" class="lab">MIPROv2</text><rect class="pop" style="--dd:0.90s" x="92" y="60" width="16" height="16" rx="4" fill="#eb6834"><title>MIPROv2, seed 1</title></rect><rect class="pop" style="--dd:0.97s" x="113" y="60" width="16" height="16" rx="4" fill="#eb6834"><title>MIPROv2, seed 2</title></rect><rect class="pop" style="--dd:1.04s" x="134" y="60" width="16" height="16" rx="4" fill="#eb6834"><title>MIPROv2, seed 3</title></rect><rect class="pop" style="--dd:1.11s" x="155" y="60" width="16" height="16" rx="4" fill="#eb6834"><title>MIPROv2, seed 4</title></rect><rect class="pop" style="--dd:1.18s" x="176" y="60" width="16" height="16" rx="4" fill="#eb6834"><title>MIPROv2, seed 5</title></rect></svg><p class="small">Optimizers recompiled for every seed. About 10 hours on an M3 MacBook Air.</p></div>
+      <div><h3>What I scored</h3>
+        <ul>
+          <li><b>Correctness</b>: 1, 0.5 or 0 per answer, reviewed</li>
+          <li><b>Similarity</b> to the gold answer, which the optimizers maximize</li>
+          <li><b>RAGAS</b> faithfulness and answer relevancy</li>
+          <li><b>110 behavioral tests</b>: paraphrased, negated and unanswerable questions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer><span>Nikita Singh · Project brief · dspy-rag evaluation</span><span>1 / 2</span></footer>
+</section>
+
+<section class="page" aria-label="Page 2">
+  <div class="top reveal">
+    <h1>What I found</h1>
+    <div class="legend"><span><i style="background:var(--base)"></i>Baseline, no optimizer</span><span><i style="background:var(--bfs)"></i>BootstrapFewShot</span><span><i style="background:var(--mip)"></i>MIPROv2</span></div>
+  </div>
+
+  <div class="row">
+    <div class="find reveal">
+      <h2><span class="n">1</span>Similarity rose; correctness stayed within noise</h2>
+      <svg class="fig" viewBox="0 0 400 168" role="img" aria-label="Change versus baseline with 95% confidence intervals. Similarity: BootstrapFewShot +0.072 (0.015 to 0.136), MIPROv2 +0.077 (0.023 to 0.135). Reviewed correctness: BootstrapFewShot +0.043 (-0.043 to 0.131), MIPROv2 +0.051 (-0.031 to 0.137)."><line x1="110" y1="20" x2="110" y2="132" stroke="#e1e0d9"/><line x1="158" y1="20" x2="158" y2="132" stroke="#e1e0d9"/><line x1="254" y1="20" x2="254" y2="132" stroke="#e1e0d9"/><line x1="302" y1="20" x2="302" y2="132" stroke="#e1e0d9"/><line x1="350" y1="20" x2="350" y2="132" stroke="#e1e0d9"/><line x1="206" y1="20" x2="206" y2="132" stroke="#52514e" stroke-width="1.2"/><text x="0" y="14" class="grp">Similarity to the gold answer</text><text x="398" y="14" text-anchor="end" class="lab2">95% CI above zero</text><circle cx="5" cy="27.5" r="4" fill="#2a78d6"/><text x="14" y="31" class="lab">BootstrapFewShot</text><g class="grow-o" style="--dd:0.25s;transform-origin:275.1px 27.5px"><line x1="220.4" y1="27.5" x2="336.6" y2="27.5" stroke="#2a78d6" stroke-width="2" stroke-linecap="round"/><line x1="220.4" y1="23" x2="220.4" y2="32" stroke="#2a78d6" stroke-width="1.6"/><line x1="336.6" y1="23" x2="336.6" y2="32" stroke="#2a78d6" stroke-width="1.6"/></g><circle class="pop" style="--dd:0.15s" cx="275.1" cy="27.5" r="5" fill="#2a78d6" stroke="#fff" stroke-width="2"><title>BootstrapFewShot: +0.072 [+0.015, +0.136]</title></circle><text x="398" y="31" text-anchor="end" class="val">+0.072</text><circle cx="5" cy="45.5" r="4" fill="#eb6834"/><text x="14" y="49" class="lab">MIPROv2</text><g class="grow-o" style="--dd:0.43s;transform-origin:279.9px 45.5px"><line x1="228.1" y1="45.5" x2="335.6" y2="45.5" stroke="#eb6834" stroke-width="2" stroke-linecap="round"/><line x1="228.1" y1="41" x2="228.1" y2="50" stroke="#eb6834" stroke-width="1.6"/><line x1="335.6" y1="41" x2="335.6" y2="50" stroke="#eb6834" stroke-width="1.6"/></g><circle class="pop" style="--dd:0.33s" cx="279.9" cy="45.5" r="5" fill="#eb6834" stroke="#fff" stroke-width="2"><title>MIPROv2: +0.077 [+0.023, +0.135]</title></circle><text x="398" y="49" text-anchor="end" class="val">+0.077</text><text x="0" y="76" class="grp">Correctness, reviewed</text><text x="398" y="76" text-anchor="end" class="lab2">95% CI includes zero</text><circle cx="5" cy="89.5" r="4" fill="#2a78d6"/><text x="14" y="93" class="lab">BootstrapFewShot</text><g class="grow-o" style="--dd:0.61s;transform-origin:247.3px 89.5px"><line x1="164.7" y1="89.5" x2="331.8" y2="89.5" stroke="#2a78d6" stroke-width="2" stroke-linecap="round"/><line x1="164.7" y1="85" x2="164.7" y2="94" stroke="#2a78d6" stroke-width="1.6"/><line x1="331.8" y1="85" x2="331.8" y2="94" stroke="#2a78d6" stroke-width="1.6"/></g><circle class="pop" style="--dd:0.51s" cx="247.3" cy="89.5" r="5" fill="#2a78d6" stroke="#fff" stroke-width="2"><title>BootstrapFewShot: +0.043 [−0.043, +0.131]</title></circle><text x="398" y="93" text-anchor="end" class="val">+0.043</text><circle cx="5" cy="107.5" r="4" fill="#eb6834"/><text x="14" y="111" class="lab">MIPROv2</text><g class="grow-o" style="--dd:0.79s;transform-origin:255px 107.5px"><line x1="176.2" y1="107.5" x2="337.5" y2="107.5" stroke="#eb6834" stroke-width="2" stroke-linecap="round"/><line x1="176.2" y1="103" x2="176.2" y2="112" stroke="#eb6834" stroke-width="1.6"/><line x1="337.5" y1="103" x2="337.5" y2="112" stroke="#eb6834" stroke-width="1.6"/></g><circle class="pop" style="--dd:0.69s" cx="255" cy="107.5" r="5" fill="#eb6834" stroke="#fff" stroke-width="2"><title>MIPROv2: +0.051 [−0.031, +0.137]</title></circle><text x="398" y="111" text-anchor="end" class="val">+0.051</text><text x="110" y="145" text-anchor="middle" class="tick">−0.10</text><text x="158" y="145" text-anchor="middle" class="tick">−0.05</text><text x="206" y="145" text-anchor="middle" class="tick">0</text><text x="254" y="145" text-anchor="middle" class="tick">+0.05</text><text x="302" y="145" text-anchor="middle" class="tick">+0.10</text><text x="350" y="145" text-anchor="middle" class="tick">+0.15</text><text x="230" y="161" text-anchor="middle" class="lab2">change vs baseline, paired bootstrap over 42 test questions</text></svg>
+      <svg class="fig" viewBox="0 0 400 44" role="img" aria-label="Mean answer length: baseline 15.3 words, BootstrapFewShot 18.2, MIPROv2 19.9"><text x="0" y="19" class="grp">Mean answer length</text><text x="0" y="32" class="lab2">words per answer</text><path class="grow" style="--dd:0.30s" d="M110,4H289.6A4,4 0 0 1 293.6,8V9A4,4 0 0 1 289.6,13H110Z" fill="#898781"><title>Baseline: 15.3 words</title></path><text x="298.6" y="12.5" class="val">15.3</text><path class="grow" style="--dd:0.45s" d="M110,17H324.4A4,4 0 0 1 328.4,21V22A4,4 0 0 1 324.4,26H110Z" fill="#2a78d6"><title>BootstrapFewShot: 18.2 words</title></path><text x="333.4" y="25.5" class="val">18.2</text><path class="grow" style="--dd:0.60s" d="M110,30H344.8A4,4 0 0 1 348.8,34V35A4,4 0 0 1 344.8,39H110Z" fill="#eb6834"><title>MIPROv2: 19.9 words</title></path><text x="353.8" y="38.5" class="val">19.9</text></svg>
+      <p class="cap">Similarity is the score the optimizers maximize, and much of its gain came from longer answers. The intervals for correctness include zero, though 9 of the 10 optimized runs beat the baseline.</p>
+    </div>
+    <div class="find reveal" style="--d:.15s">
+      <h2><span class="n">2</span>The gain was all single-hop</h2>
+      <svg class="fig" viewBox="0 0 276 168" role="img" aria-label="Reviewed correctness by question type. Single-hop: baseline 0.865, BootstrapFewShot 0.942, MIPROv2 0.954. Multi-hop: baseline 0.722, BootstrapFewShot 0.667, MIPROv2 0.667."><line x1="20" y1="18" x2="20" y2="132" stroke="#e1e0d9"/><line x1="80" y1="18" x2="80" y2="132" stroke="#e1e0d9"/><line x1="140" y1="18" x2="140" y2="132" stroke="#e1e0d9"/><line x1="200" y1="18" x2="200" y2="132" stroke="#e1e0d9"/><line x1="260" y1="18" x2="260" y2="132" stroke="#e1e0d9"/><text x="0" y="12" class="grp">Single-hop<tspan class="lab2" dx="6">26 questions</tspan></text><line x1="179" y1="21" x2="179" y2="63" stroke="#c3c2b7"/><circle class="pop" style="--dd:.2s" cx="179" cy="27" r="4.5" fill="#898781" stroke="#fff" stroke-width="2"><title>Baseline: 0.865</title></circle><text x="188" y="30.5" class="val">0.865</text><line class="grow-o" style="--dd:0.35s;transform-origin:179px 42px" x1="179" y1="42" x2="225.2" y2="42" stroke="#2a78d6" stroke-width="2"/><circle class="pop" style="--dd:0.85s" cx="225.2" cy="42" r="4.5" fill="#2a78d6" stroke="#fff" stroke-width="2"><title>BootstrapFewShot: 0.942</title></circle><text x="234.2" y="45.5" class="val">0.942</text><line class="grow-o" style="--dd:0.50s;transform-origin:179px 57px" x1="179" y1="57" x2="232.4" y2="57" stroke="#eb6834" stroke-width="2"/><circle class="pop" style="--dd:1.00s" cx="232.4" cy="57" r="4.5" fill="#eb6834" stroke="#fff" stroke-width="2"><title>MIPROv2: 0.954</title></circle><text x="241.4" y="60.5" class="val">0.954</text><text x="0" y="80" class="grp">Multi-hop<tspan class="lab2" dx="6">9 questions</tspan></text><line x1="93.2" y1="89" x2="93.2" y2="131" stroke="#c3c2b7"/><circle class="pop" style="--dd:.2s" cx="93.2" cy="95" r="4.5" fill="#898781" stroke="#fff" stroke-width="2"><title>Baseline: 0.722</title></circle><text x="102.2" y="98.5" class="val">0.722</text><line class="grow-o" style="--dd:0.65s;transform-origin:93.2px 110px" x1="93.2" y1="110" x2="60.2" y2="110" stroke="#2a78d6" stroke-width="2"/><circle class="pop" style="--dd:1.15s" cx="60.2" cy="110" r="4.5" fill="#2a78d6" stroke="#fff" stroke-width="2"><title>BootstrapFewShot: 0.667</title></circle><text x="51.2" y="113.5" text-anchor="end" class="val">0.667</text><line class="grow-o" style="--dd:0.80s;transform-origin:93.2px 125px" x1="93.2" y1="125" x2="60.2" y2="125" stroke="#eb6834" stroke-width="2"/><circle class="pop" style="--dd:1.30s" cx="60.2" cy="125" r="4.5" fill="#eb6834" stroke="#fff" stroke-width="2"><title>MIPROv2: 0.667</title></circle><text x="51.2" y="128.5" text-anchor="end" class="val">0.667</text><text x="20" y="145" text-anchor="middle" class="tick">0.6</text><text x="80" y="145" text-anchor="middle" class="tick">0.7</text><text x="140" y="145" text-anchor="middle" class="tick">0.8</text><text x="200" y="145" text-anchor="middle" class="tick">0.9</text><text x="260" y="145" text-anchor="middle" class="tick">1.0</text><text x="140" y="161" text-anchor="middle" class="lab2">correctness, reviewed (mean of 5 seeds)</text></svg>
+      <div class="quote"><span class="q">Travel meal allowance? Baseline:</span> “$75.” <span class="q">Optimized:</span> “$75 in North America and €70 in Europe.”</div>
+      <p class="cap">Multi-hop got slightly worse, and retrieval was not the cause (context recall 0.97).</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="find reveal">
+      <h2><span class="n">3</span>Fewer fragile answers, the same hallucinations</h2>
+      <svg class="fig" viewBox="0 0 400 174" role="img" aria-label="CheckList failure rates (baseline, BootstrapFewShot, MIPROv2): paraphrase 9%, 2%, 6%; negation 31%, 12%, 18%; near-miss unanswerable 25%, 27%, 33%"><line x1="205.0" y1="2" x2="205.0" y2="142" stroke="#e1e0d9"/><line x1="260.0" y1="2" x2="260.0" y2="142" stroke="#e1e0d9"/><line x1="315.0" y1="2" x2="315.0" y2="142" stroke="#e1e0d9"/><line x1="370.0" y1="2" x2="370.0" y2="142" stroke="#e1e0d9"/><line x1="150" y1="2" x2="150" y2="142" stroke="#c3c2b7"/><text x="0" y="19" class="grp">Paraphrased question</text><text x="0" y="32" class="lab2">45 tests</text><path class="grow" style="--dd:0.20s" d="M150,4H195.5A4,4 0 0 1 199.5,8V10A4,4 0 0 1 195.5,14H150Z" fill="#898781"><title>Paraphrased question, Baseline: 9% failed</title></path><text x="203.5" y="12.5" class="val">9%</text><path class="grow" style="--dd:0.28s" d="M150,16H157A4,4 0 0 1 161,20V22A4,4 0 0 1 157,26H150Z" fill="#2a78d6"><title>Paraphrased question, BootstrapFewShot: 2% failed</title></path><text x="165" y="24.5" class="val">2%</text><path class="grow" style="--dd:0.36s" d="M150,28H179A4,4 0 0 1 183,32V34A4,4 0 0 1 179,38H150Z" fill="#eb6834"><title>Paraphrased question, MIPROv2: 6% failed</title></path><text x="187" y="36.5" class="val">6%</text><text x="0" y="67" class="grp">Negated yes/no question</text><text x="0" y="80" class="lab2">16 pairs</text><path class="grow" style="--dd:0.44s" d="M150,52H316.5A4,4 0 0 1 320.5,56V58A4,4 0 0 1 316.5,62H150Z" fill="#898781"><title>Negated yes/no question, Baseline: 31% failed</title></path><text x="324.5" y="60.5" class="val">31%</text><path class="grow" style="--dd:0.52s" d="M150,64H212A4,4 0 0 1 216,68V70A4,4 0 0 1 212,74H150Z" fill="#2a78d6"><title>Negated yes/no question, BootstrapFewShot: 12% failed</title></path><text x="220" y="72.5" class="val">12%</text><path class="grow" style="--dd:0.60s" d="M150,76H245A4,4 0 0 1 249,80V82A4,4 0 0 1 245,86H150Z" fill="#eb6834"><title>Negated yes/no question, MIPROv2: 18% failed</title></path><text x="253" y="84.5" class="val">18%</text><text x="0" y="115" class="grp">Near-miss unanswerable</text><text x="0" y="128" class="lab2">12 tests</text><path class="grow" style="--dd:0.68s" d="M150,100H283.5A4,4 0 0 1 287.5,104V106A4,4 0 0 1 283.5,110H150Z" fill="#898781"><title>Near-miss unanswerable, Baseline: 25% failed</title></path><text x="291.5" y="108.5" class="val">25%</text><path class="grow" style="--dd:0.76s" d="M150,112H294.5A4,4 0 0 1 298.5,116V118A4,4 0 0 1 294.5,122H150Z" fill="#2a78d6"><title>Near-miss unanswerable, BootstrapFewShot: 27% failed</title></path><text x="302.5" y="120.5" class="val">27%</text><path class="grow" style="--dd:0.84s" d="M150,124H327.5A4,4 0 0 1 331.5,128V130A4,4 0 0 1 327.5,134H150Z" fill="#eb6834"><title>Near-miss unanswerable, MIPROv2: 33% failed</title></path><text x="335.5" y="132.5" class="val">33%</text><text x="150.0" y="155" text-anchor="middle" class="tick">0%</text><text x="205.0" y="155" text-anchor="middle" class="tick">10%</text><text x="260.0" y="155" text-anchor="middle" class="tick">20%</text><text x="315.0" y="155" text-anchor="middle" class="tick">30%</text><text x="370.0" y="155" text-anchor="middle" class="tick">40%</text><text x="260.0" y="170" text-anchor="middle" class="lab2">tests failed (optimized setups: mean of 5 seeds)</text></svg>
+      <p class="cap">A near-miss question sits next to a covered fact: the auto-lock rule is for laptops, and the test asks about phones. The model applied the neighboring rule instead of declining.</p>
+    </div>
+    <div class="find reveal" style="--d:.15s">
+      <h2><span class="n">4</span>Perfect scores for wrong answers</h2>
+      <svg class="fig" viewBox="0 0 276 26" role="img" aria-label="11 failing baseline answers; 4 of them received a perfect RAGAS faithfulness score of 1.00"><g class="pop" style="--dd:0.60s"><rect x="0" y="2" width="20" height="20" rx="4" fill="#d03b3b"/><text x="10" y="15" text-anchor="middle" class="tile">1.00</text></g><g class="pop" style="--dd:0.72s"><rect x="25.6" y="2" width="20" height="20" rx="4" fill="#d03b3b"/><text x="35.6" y="15" text-anchor="middle" class="tile">1.00</text></g><g class="pop" style="--dd:0.84s"><rect x="51.2" y="2" width="20" height="20" rx="4" fill="#d03b3b"/><text x="61.2" y="15" text-anchor="middle" class="tile">1.00</text></g><g class="pop" style="--dd:0.96s"><rect x="76.8" y="2" width="20" height="20" rx="4" fill="#d03b3b"/><text x="86.8" y="15" text-anchor="middle" class="tile">1.00</text></g><rect class="pop" style="--dd:0.26s" x="102.4" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.30s" x="128" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.34s" x="153.6" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.38s" x="179.2" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.42s" x="204.8" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.46s" x="230.4" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/><rect class="pop" style="--dd:0.50s" x="256" y="2" width="20" height="20" rx="4" fill="#e1e0d9"/></svg>
+      <p class="cap">Of the baseline's 11 failing test answers, RAGAS gave 4 a perfect faithfulness score.</p>
+      <div class="quote"><span class="q">Q:</span> “Is economy <i>not</i> the standard class for flights under 6 hours?”<br><span class="q">A:</span> “Yes, economy class is the standard…” <span class="score">faithfulness 1.00</span></div>
+      <p class="mini">Unanswerable questions: answer relevancy</p>
+      <svg class="fig" viewBox="0 0 276 52" role="img" aria-label="Answer relevancy on unanswerable questions: correct refusals 0.11, hallucinated answers 0.69"><text x="0" y="12" class="lab">Correct refusal</text><text x="0" y="23" class="lab2">14 answers</text><path class="grow" style="--dd:0.40s" d="M112,5H122.3A4,4 0 0 1 126.3,9V11A4,4 0 0 1 122.3,15H112Z" fill="#52514e"><title>Correct refusal: answer relevancy 0.11</title></path><text x="131.3" y="13.5" class="val">0.11</text><text x="0" y="36" class="lab">Hallucinated answer</text><text x="0" y="47" class="lab2">4 answers</text><path class="grow" style="--dd:0.65s" d="M112,29H197.7A4,4 0 0 1 201.7,33V35A4,4 0 0 1 197.7,39H112Z" fill="#d03b3b"><title>Hallucinated answer: answer relevancy 0.69</title></path><text x="206.7" y="37.5" class="val">0.69</text></svg>
+      <p class="cap">Faithfulness gave both 0.25.</p>
+    </div>
+  </div>
+
+  <section class="find reveal">
+    <h2><span class="n">5</span>The checks needed checking too</h2>
+    <div class="checks">
+      <div class="stat"><div class="big"><span class="count" data-to="72">72</span>%</div><p>agreement between the 7B judge's correctness grades and the review</p><svg class="fig" viewBox="0 0 170 34" role="img" aria-label="Judge agreement: 81% on single-hop answers, 58% on multi-hop answers"><text x="0" y="11" class="lab2">single-hop</text><rect x="58" y="3" width="80" height="9" rx="4.5" fill="#e1e0d9"/><path class="grow" style="--dd:0.40s" d="M58,3H118.3A4.5,4.5 0 0 1 122.8,7.5V7.5A4.5,4.5 0 0 1 118.3,12H58Z" fill="#52514e"/><text x="143" y="11" class="val">81%</text><text x="0" y="27" class="lab2">multi-hop</text><rect x="58" y="19" width="80" height="9" rx="4.5" fill="#e1e0d9"/><path class="grow" style="--dd:0.60s" d="M58,19H99.9A4.5,4.5 0 0 1 104.4,23.5V23.5A4.5,4.5 0 0 1 99.9,28H58Z" fill="#52514e"/><text x="143" y="27" class="val">58%</text></svg></div>
+      <div class="stat"><div class="big"><span class="count" data-to="2.5" data-dec="1">2.5</span>×</div><p>larger BootstrapFewShot gain if I had trusted the judge alone</p><svg class="fig" viewBox="0 0 170 34" role="img" aria-label="BootstrapFewShot gain in correctness: +0.106 by the 7B judge, +0.043 by the review"><text x="0" y="11" class="lab2">7B judge</text><path class="grow" style="--dd:0.40s" d="M58,3H128.2A4,4 0 0 1 132.2,7V8A4,4 0 0 1 128.2,12H58Z" fill="#898781"/><text x="137.2" y="11" class="val">+0.106</text><text x="0" y="27" class="lab2">review</text><path class="grow" style="--dd:0.60s" d="M58,19H84.1A4,4 0 0 1 88.1,23V24A4,4 0 0 1 84.1,28H58Z" fill="#52514e"/><text x="93.1" y="27" class="val">+0.043</text></svg></div>
+      <div class="stat"><div class="big"><span class="count" data-to="3">3</span> of 5</div><p>MIPROv2 seeds dropped my instruction to say “I don't know”</p><svg class="fig" viewBox="0 0 170 34" role="img" aria-label="Of 5 MIPROv2 seeds, 3 dropped the instruction to say I don't know"><g class="pop" style="--dd:0.30s"><rect x="1" y="5" width="18" height="18" rx="4" fill="#fff" stroke="#eb6834" stroke-width="1.6"/><path d="M6,10 L14,18 M14,10 L6,18" stroke="#d03b3b" stroke-width="1.8" stroke-linecap="round"/></g><g class="pop" style="--dd:0.42s"><rect x="25" y="5" width="18" height="18" rx="4" fill="#fff" stroke="#eb6834" stroke-width="1.6"/><path d="M30,10 L38,18 M38,10 L30,18" stroke="#d03b3b" stroke-width="1.8" stroke-linecap="round"/></g><g class="pop" style="--dd:0.54s"><rect x="49" y="5" width="18" height="18" rx="4" fill="#fff" stroke="#eb6834" stroke-width="1.6"/><path d="M54,10 L62,18 M62,10 L54,18" stroke="#d03b3b" stroke-width="1.8" stroke-linecap="round"/></g><g class="pop" style="--dd:0.66s"><rect x="73" y="5" width="18" height="18" rx="4" fill="#eb6834" stroke="#eb6834" stroke-width="1.6"/></g><g class="pop" style="--dd:0.78s"><rect x="97" y="5" width="18" height="18" rx="4" fill="#eb6834" stroke="#eb6834" stroke-width="1.6"/></g><text x="124" y="13" class="lab2">rule</text><text x="124" y="24" class="lab2">dropped</text></svg></div>
+    </div>
+  </section>
+
+  <div class="ln reveal">
+    <div><h2>What I learned</h2>
+      <ol>
+        <li><span><b>Optimize the behavior you want.</b> Similarity rewarded longer, gold-like phrasing, so the optimizers mostly changed style.</span></li>
+        <li><span><b>Test how a system fails.</b> Averages looked healthy (faithfulness 0.96, recall 0.97) while 31% of negated questions failed.</span></li>
+        <li><span><b>Check the grader.</b> An LLM judge is a model too: on multi-hop answers it matched the review 58% of the time.</span></li>
+      </ol>
+    </div>
+    <div><h2>What I would do next</h2>
+      <ol>
+        <li><span><b>About 4× more test questions</b>, many of them multi-hop, so a 0.05 gain is detectable</span></li>
+        <li><span><b>Optimize for correctness</b> (complete, no contradictions) instead of similarity</span></li>
+        <li><span><b>Pin the “decline if not covered” rule</b> and add negated and near-miss questions to training</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <footer><span>Every number: <a href="https://github.com/Singhniku/dspy-rag">github.com/Singhniku/dspy-rag</a>, README and eval/results/ (October 2026)</span><span>2 / 2</span></footer>
+</section>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var isStatic = /[?&]static\b/.test(location.search) ||
+                 (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  // overflow guard: printed pages must not clip content
+  root.setAttribute('data-overflow', pages.map(function (p, i) {
+    return p.scrollHeight > p.clientHeight + 1 ? 'page' + (i + 1) + ':' + (p.scrollHeight - p.clientHeight) : '';
+  }).filter(Boolean).join(',') || 'none');
+  if (isStatic) { root.classList.add('static'); return; }
+  function fit() {
+    var w = window.innerWidth;
+    document.body.style.zoom = w < 870 ? Math.max(.35, (w - 16) / 836) : 1;
+  }
+  fit(); window.addEventListener('resize', fit);
+  root.classList.add('anim');
+  var reveals = document.querySelectorAll('.reveal');
+  function countUp(el) {
+    var to = parseFloat(el.dataset.to), dec = parseInt(el.dataset.dec || '0', 10), t0 = null;
+    function step(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / 1100), e = 1 - Math.pow(1 - k, 3);
+      el.textContent = (to * e).toFixed(dec);
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.count').forEach(countUp);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+  reveals.forEach(function (el) { io.observe(el); });
+  document.getElementById('replay').addEventListener('click', function () {
+    reveals.forEach(function (el) { el.classList.remove('in'); });
+    void document.body.offsetWidth;
+    setTimeout(function () { reveals.forEach(function (el) { io.observe(el); }); }, 60);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.getElementById('print').addEventListener('click', function () { window.print(); });
+})();
+</script>
+</body>
+</html>
