@@ -113,6 +113,8 @@ footer { margin-top: auto; display: flex; justify-content: space-between; gap: 1
   .page { margin: 0; box-shadow: none; break-after: page; }
   .page:last-of-type { break-after: auto; }
   .toolbar, .particles { display: none !important; }
+  .reveal, .pop, .grow, .grow-o { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .draw { stroke-dashoffset: 0 !important; transition: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .particles { display: none !important; } }
 </style>
@@ -280,6 +282,10 @@ footer { margin-top: auto; display: flex; justify-content: space-between; gap: 1
     });
   }, { threshold: 0.2 });
   reveals.forEach(function (el) { io.observe(el); });
+  // printing or saving as PDF shows every section, animated in or not
+  window.addEventListener('beforeprint', function () {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  });
   document.getElementById('replay').addEventListener('click', function () {
     reveals.forEach(function (el) { el.classList.remove('in'); });
     void document.body.offsetWidth;
